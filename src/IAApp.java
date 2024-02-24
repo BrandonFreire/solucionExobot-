@@ -26,15 +26,17 @@ public class IAApp {
         //     System.out.println(sDto.toString());
         // }
         ExobotDTO exobotDTO = new ExobotDTO();
-        exobotDTO.setIdIABot(1);
-        exobotDTO.setIdArmaIzquierda(2);
-        exobotDTO.setIdArmaDerecha(1);
-        exobotDTO.setNombre("Serie-0000");
-        exobotDTO.setSerie("Serie 0000");
-
+        // exobotDTO.setIdExaBot(1);
+        // exobotDTO.setIdIABot(1);
+        // exobotDTO.setIdArmaIzquierda(2);
+        // exobotDTO.setIdArmaDerecha(1);
+        // exobotDTO.setNombre("Exobot-001");
+        // exobotDTO.setSerie("Serie E001");
 
         ExobotDAO exoDAO = new ExobotDAO();
-        exoDAO.create(exobotDTO);
+        //exoDAO.create(exobotDTO);
+        //exoDAO.update(exobotDTO);
+        exoDAO.delete(1);
         // for (ExobotDTO eDTO : exoDAO.readSections(100, 1)) {
         //     System.out.println(eDTO.toString());
         // }

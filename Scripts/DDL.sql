@@ -17,6 +17,7 @@ CREATE TABLE Exobots (
     IdArmaDerecha     INTEGER NOT NULL,
     Nombre            TEXT NOT NULL,
     Serie             TEXT NOT NULL,
+    Estado            VARCHAR(1)  NOT NULL DEFAULT('A'),
     CONSTRAINT fk_IABot FOREIGN KEY (IdIABot) REFERENCES IABot(IdIABot),
     CONSTRAINT fk_ArmaIzquierda FOREIGN KEY (IdArmaIzquierda) REFERENCES ArmaIzquierda(IdArmaIzquierda),
     CONSTRAINT fk_ArmaDerecha FOREIGN KEY (IdArmaDerecha) REFERENCES ArmaDerecha(IdArmaDerecha)

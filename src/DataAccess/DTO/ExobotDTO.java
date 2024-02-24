@@ -5,7 +5,7 @@ package DataAccess.DTO;
  * @version 1.0
  */
 public class ExobotDTO {
-    //private int    IdExaBot;
+    private int    IdExaBot;
     private int    IdIABot;
     private int    IdArmaIzquierda;
     private int    IdArmaDerecha;
@@ -35,12 +35,12 @@ public class ExobotDTO {
      * getter/setter
      * @return
      */
-    // public int getIdExaBot() {
-    //     return IdExaBot;
-    // }
-    // public void setIdExaBot(int idExaBot) {
-    //     IdExaBot = idExaBot;
-    // }
+    public int getIdExaBot() {
+        return IdExaBot;
+    }
+    public void setIdExaBot(int idExaBot) {
+        IdExaBot = idExaBot;
+    }
     public int getIdIABot() {
         return IdIABot;
     }
