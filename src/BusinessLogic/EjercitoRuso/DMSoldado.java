@@ -4,7 +4,7 @@ public class DMSoldado extends DMHumano implements IAIHumanoExtremidad {
     private boolean dmHabilidadBrazoDer;
 
     public DMSoldado(String dmNombre) {
-        super(dmNombre);
+        super(dmNombre, "3");
         this.dmHabilidadBrazoIzq = dmGetHabilidadRandom();
         this.dmHabilidadBrazoDer = dmGetHabilidadRandom();
     }

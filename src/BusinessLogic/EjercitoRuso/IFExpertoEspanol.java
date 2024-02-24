@@ -13,7 +13,7 @@ public class IFExpertoEspanol extends DMHumano{
      * @param ifnombre
      */
     public IFExpertoEspanol(String ifnombre) {
-        super(ifnombre);
+        super(ifnombre, "1");
     }
 
     /**

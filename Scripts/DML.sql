@@ -13,7 +13,12 @@ INSERT INTO IABot(Nombre)
 VALUES ('IABotUnique');
 SELECT * FROM IABot;
 
--- database: ../db/Data.sqlite
+INSERT INTO Cargo(Descp)
+Values ('Experto en espanol'),
+       ('Experto en ingles'),
+       ('Soldado'),
+       ('Mecatronico');
+
 INSERT INTO Exobots (IdIABot, IdArmaIzquierda, IdArmaDerecha, Nombre, Serie)
 VALUES  (1, 1, 1, 'Exobot-001', 'Serie E001'),
         (1, 2, 2, 'Exobot-002', 'Serie E002'),

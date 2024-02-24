@@ -1,9 +1,11 @@
 package BusinessLogic.EjercitoRuso;
 public abstract class DMHumano {
     private String dmNombre;
+    private String dmCargo;
 
-    public DMHumano(String dmNombre) {
+    public DMHumano(String dmNombre, String dmCargo) {
         this.dmNombre = dmNombre;
+        this.dmCargo = dmCargo;
     }
 
     public String getDmNombre() {

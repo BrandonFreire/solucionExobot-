@@ -20,7 +20,7 @@ public class IAMecatronico extends DMHumano {
     IAIABot dmPadreDeTodo = IAIABot.iaGetInstance("Padre");
 
     public IAMecatronico(String nombre) {
-        super(nombre);
+        super(nombre, "4");
     }
 
     public void iaDesplegarPeloton() {
