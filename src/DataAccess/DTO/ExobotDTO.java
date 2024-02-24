@@ -12,8 +12,10 @@ public class ExobotDTO {
     private String Nombre;
     private String Serie;
 
+    public ExobotDTO() {}
+
     /**
-     * constructor
+     * constructor con parametros 
      * @param idExaBot
      * @param string
      * @param string2

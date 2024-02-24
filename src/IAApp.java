@@ -25,10 +25,19 @@ public class IAApp {
         //        //System.out.println(sDto.getNombre()+" "+sDto.getFechaCrea());
         //     System.out.println(sDto.toString());
         // }
+        ExobotDTO exobotDTO = new ExobotDTO();
+        exobotDTO.setIdIABot(1);
+        exobotDTO.setIdArmaIzquierda(2);
+        exobotDTO.setIdArmaDerecha(1);
+        exobotDTO.setNombre("Serie-0000");
+        exobotDTO.setSerie("Serie 0000");
 
-        ExobotDAO listDAO = new ExobotDAO();
-        for (ExobotDTO eDTO : listDAO.readSections(100, 1)) {
-            System.out.println(eDTO.toString());
-        }
+
+        ExobotDAO exoDAO = new ExobotDAO();
+        exoDAO.create(exobotDTO);
+        // for (ExobotDTO eDTO : exoDAO.readSections(100, 1)) {
+        //     System.out.println(eDTO.toString());
+        // }
+        // System.out.println(exoDAO.readBy(5).toString());
     }
 }

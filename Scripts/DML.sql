@@ -1021,3 +1021,5 @@ SELECT * FROM Exobots;
 SELECT IdExaBot, IdIABot, Nombre, Serie FROM Exobots;
 
 SELECT IdIABot, IdArmaIzquierda, IdArmaDerecha, Nombre, Serie FROM Exobots LIMIT 100 OFFSET 1;
+
+SELECT IdIABot, IdArmaIzquierda, IdArmaDerecha, Nombre, Serie FROM Exobots WHERE IdExaBot = 5;
