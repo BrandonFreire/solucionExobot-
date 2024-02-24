@@ -11,12 +11,12 @@ CREATE TABLE IABot (
 );
 
 CREATE TABLE Exobots (
-    IdExaBot INTEGER PRIMARY KEY AUTOINCREMENT,
-    IdIABot INTEGER NOT NULL,
-    IdArmaIzquierda INTEGER NOT NULL,
-    IdArmaDerecha INTEGER NOT NULL,
-    Nombre TEXT NOT NULL,
-    Serie TEXT NOT NULL,
+    IdExaBot          INTEGER PRIMARY KEY AUTOINCREMENT,
+    IdIABot           INTEGER NOT NULL,
+    IdArmaIzquierda   INTEGER NOT NULL,
+    IdArmaDerecha     INTEGER NOT NULL,
+    Nombre            TEXT NOT NULL,
+    Serie             TEXT NOT NULL,
     CONSTRAINT fk_IABot FOREIGN KEY (IdIABot) REFERENCES IABot(IdIABot),
     CONSTRAINT fk_ArmaIzquierda FOREIGN KEY (IdArmaIzquierda) REFERENCES ArmaIzquierda(IdArmaIzquierda),
     CONSTRAINT fk_ArmaDerecha FOREIGN KEY (IdArmaDerecha) REFERENCES ArmaDerecha(IdArmaDerecha)

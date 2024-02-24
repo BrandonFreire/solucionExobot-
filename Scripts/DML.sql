@@ -1,4 +1,4 @@
--- database: ../DataBase/Exobot.sqlite
+-- database: ../DataBase/Data.sqlite
 INSERT INTO ArmaIzquierda(Nombre)
 VALUES ('Metralleta MK-61'),
        ('Bazuca antitanque');
@@ -13,7 +13,7 @@ INSERT INTO IABot(Nombre)
 VALUES ('IABotUnique');
 SELECT * FROM IABot;
 
--- database: ../db/Exobot.sqlite
+-- database: ../db/Data.sqlite
 INSERT INTO Exobots (IdIABot, IdArmaIzquierda, IdArmaDerecha, Nombre, Serie)
 VALUES  (1, 1, 1, 'Exobot-001', 'Serie E001'),
         (1, 2, 2, 'Exobot-002', 'Serie E002'),
@@ -1018,4 +1018,6 @@ VALUES  (1, 1, 1, 'Exobot-001', 'Serie E001'),
         (1, 1, 2, 'Exobot-1000', 'Serie E1000');  
 
 SELECT * FROM Exobots;
-SELECT IdExaBot, IdIABot, Nombre, Serie FROM Exobots
+SELECT IdExaBot, IdIABot, Nombre, Serie FROM Exobots;
+
+SELECT IdIABot, IdArmaIzquierda, IdArmaDerecha, Nombre, Serie FROM Exobots LIMIT 100 OFFSET 1;

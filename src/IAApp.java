@@ -1,5 +1,8 @@
-import DataAccess.SexoDAO;
-import DataAccess.DTO.SexoDTO;
+//import DataAccess.SexoDAO;
+//import DataAccess.DTO.SexoDTO;
+
+import DataAccess.ExobotDAO;
+import DataAccess.DTO.ExobotDTO;
 
 /**
  * @autor Ivonne Ayala
@@ -10,8 +13,8 @@ import DataAccess.DTO.SexoDTO;
 
 public class IAApp {
     public static void main(String[] args) throws Exception {
-        IFWhiterun ifWhiterun = new IFWhiterun();
-        ifWhiterun.crearCampoGuerra();
+        // IFWhiterun ifWhiterun = new IFWhiterun();
+        // ifWhiterun.crearCampoGuerra();
         // DACExobot ex = new DACExobot();
         // ResultSet rs = ex.getAllExobot();
         // while (rs.next()) {
@@ -19,8 +22,13 @@ public class IAApp {
         // }
         // SexoDAO listDao = new SexoDAO();
         // for (SexoDTO sDto : listDao.readAll()) {
-        //       //System.out.println(sDto.getNombre()+" "+sDto.getFechaCrea());
+        //        //System.out.println(sDto.getNombre()+" "+sDto.getFechaCrea());
         //     System.out.println(sDto.toString());
         // }
+
+        ExobotDAO listDAO = new ExobotDAO();
+        for (ExobotDTO eDTO : listDAO.readSections(100, 1)) {
+            System.out.println(eDTO.toString());
+        }
     }
 }
