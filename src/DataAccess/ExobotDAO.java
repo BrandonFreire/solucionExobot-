@@ -9,8 +9,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import DataAccess.DTO.ExobotDTO;
+/**
+ * @author Ismael Freire
+ * @date 24/02/2024
+ * @version 2.0
+ */
 
 public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO> {
 

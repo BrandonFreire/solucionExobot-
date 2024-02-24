@@ -1,6 +1,7 @@
 //import DataAccess.SexoDAO;
 //import DataAccess.DTO.SexoDTO;
 
+import BusinessLogic.ExobotBL;
 import DataAccess.ExobotDAO;
 import DataAccess.DTO.ExobotDTO;
 
@@ -25,7 +26,7 @@ public class IAApp {
         //        //System.out.println(sDto.getNombre()+" "+sDto.getFechaCrea());
         //     System.out.println(sDto.toString());
         // }
-        ExobotDTO exobotDTO = new ExobotDTO();
+        // ExobotDTO exobotDTO = new ExobotDTO();
         // exobotDTO.setIdExaBot(1);
         // exobotDTO.setIdIABot(1);
         // exobotDTO.setIdArmaIzquierda(2);
@@ -33,13 +34,20 @@ public class IAApp {
         // exobotDTO.setNombre("Exobot-001");
         // exobotDTO.setSerie("Serie E001");
 
-        ExobotDAO exoDAO = new ExobotDAO();
+        // ExobotDAO exoDAO = new ExobotDAO();
         //exoDAO.create(exobotDTO);
         //exoDAO.update(exobotDTO);
-        exoDAO.delete(1);
+        // exoDAO.delete(1);
         // for (ExobotDTO eDTO : exoDAO.readSections(100, 1)) {
         //     System.out.println(eDTO.toString());
         // }
         // System.out.println(exoDAO.readBy(5).toString());
+        ExobotBL exobotBL = new ExobotBL();
+        // exobotBL.delete(1);
+        // exobotBL.add(1, 2, 1, "Ismael", "Serie 3000");
+        // exobotBL.delete(1002);
+        for (ExobotDTO s : exobotBL.getReadSections(20, 0)) {
+            System.out.println(s.toString());
+        }
     }
 }
