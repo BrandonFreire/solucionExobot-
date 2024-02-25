@@ -11,7 +11,7 @@ public class IFExpertoIngles extends DMHumano{
      * constructor con parametros
      */
     public IFExpertoIngles(String ifnombre) {
-        super(ifnombre);
+        super(ifnombre, "2");
     }
     /**
      * metodo para traducir al ingles
