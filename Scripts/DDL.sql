@@ -5,9 +5,9 @@ DROP TABLE IF EXISTS ArmaIzquierda;
 DROP TABLE IF EXISTS ArmaDerecha;
 
 CREATE TABLE IABot (
-    IdIABot INTEGER PRIMARY KEY AUTOINCREMENT,
-    Nombre TEXT NOT NULL UNIQUE,
-    FechaCrea DATETIME DEFAULT CURRENT_TIMESTAMP
+    IdIABot     INTEGER PRIMARY KEY AUTOINCREMENT,
+    Nombre      TEXT NOT NULL UNIQUE,
+    FechaCrea   DATETIME    DEFAULT(datetime('now','localtime'))
 );
 
 CREATE TABLE Exobots (
@@ -18,7 +18,8 @@ CREATE TABLE Exobots (
     Nombre            TEXT NOT NULL,
     Serie             TEXT NOT NULL,
     Estado            VARCHAR(1)  NOT NULL DEFAULT('A'),
-    CONSTRAINT fk_IABot FOREIGN KEY (IdIABot) REFERENCES IABot(IdIABot),
+    CONSTRAINT fk_IABot FOREIGN KEY (IdI
+    ABot) REFERENCES IABot(IdIABot),
     CONSTRAINT fk_ArmaIzquierda FOREIGN KEY (IdArmaIzquierda) REFERENCES ArmaIzquierda(IdArmaIzquierda),
     CONSTRAINT fk_ArmaDerecha FOREIGN KEY (IdArmaDerecha) REFERENCES ArmaDerecha(IdArmaDerecha)
 );
