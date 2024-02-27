@@ -1,6 +1,6 @@
 -- database: ../DataBase/Exobot.sqlite
 DROP TABLE IF EXISTS IABot;
-DROP TABLE IF EXISTS Exobots;
+DROP TABLE IF EXISTS Exobot;
 DROP TABLE IF EXISTS ArmaIzquierda;
 DROP TABLE IF EXISTS ArmaDerecha;
 DROP TABLE IF EXISTS Persona;
@@ -12,7 +12,7 @@ CREATE TABLE IABot (
     FechaCrea   DATETIME    DEFAULT(datetime('now','localtime'))
 );
 
-CREATE TABLE Exobots (
+CREATE TABLE Exobot (
     IdExaBot          INTEGER PRIMARY KEY AUTOINCREMENT,
     IdIABot           INTEGER NOT NULL,
     IdArmaIzquierda   INTEGER NOT NULL,
