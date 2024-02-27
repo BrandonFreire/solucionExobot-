@@ -50,10 +50,13 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
 
     private void showRow() {
         boolean ExobotNull = (exobot == null);
-        txtIdSexo.setText((ExobotNull) ? " " : exobot.getIdExaBot().toString());
+        txtIdExobot.setText((ExobotNull) ? " " : exobot.getIdExaBot().toString());
+        
         txtNombre.setText((ExobotNull) ? " " : exobot.getNombre());
         lblTotalReg.setText(idExobot.toString() + " de " + idMaxExobot.toString());
     }
+
+    
 
     private void btnNuevoClick() {
         exobot = null;
@@ -124,7 +127,7 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
     }
 
     private void showTable() throws Exception {
-        String[] header = {"Id", "Nombre", "Estado"};
+        String[] header = {"IdExaBot", "getIdIABot", "IdArmaDerecha", "IdArmaIzquierda", "Nombre", "Serie"};
         Object[][] data = new Object[exobotBL.getAll().size()][6];
         int index = 0;
         for (ExobotDTO s : exobotBL.getAll()) {
@@ -173,12 +176,12 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
  * FormDesing : pat_mic
  ************************/ 
     private EXOLabel 
-            lblTitulo   = new EXOLabel("SEXO"),
+            lblTitulo   = new EXOLabel("EXOBOT"),
             lblIdSexo   = new EXOLabel(" Codigo:      "),
             lblNombre   = new EXOLabel("*Descripción: "),
             lblTotalReg = new EXOLabel(" 0 de 0 ");
     private EXOTextBox 
-            txtIdSexo   = new EXOTextBox(),
+            txtIdExobot   = new EXOTextBox(),
             txtNombre   = new EXOTextBox();
     private EXOButton 
             btnPageIni  = new EXOButton(" |< "),

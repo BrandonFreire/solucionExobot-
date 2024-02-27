@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import DataAccess.DTO.PersonaCargoDTO;
+import Framework.EXOException;
 
 public class PersonaCargoDAO extends SQLiteDataHelper {
 
@@ -27,7 +28,7 @@ public class PersonaCargoDAO extends SQLiteDataHelper {
                 );
             }
         } catch (SQLException e) {
-            throw e;
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()");
         }
         return personaCargoDTO;
     }
@@ -50,7 +51,7 @@ public class PersonaCargoDAO extends SQLiteDataHelper {
                 list.add(pcDTO);
             }
         } catch (SQLException e) {
-            throw e;
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()");
         }
         return list;
     }
@@ -71,7 +72,7 @@ public class PersonaCargoDAO extends SQLiteDataHelper {
                 list.add(pcDTO);
             }
         } catch (SQLException e) {
-            throw e;
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()");
         }
         return list;
     }

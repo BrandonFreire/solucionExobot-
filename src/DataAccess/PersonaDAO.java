@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import DataAccess.DTO.PersonaDTO;
+import Framework.EXOException;
 
 public class PersonaDAO extends SQLiteDataHelper implements IDAO<PersonaDTO>{
     @Override
@@ -35,7 +36,7 @@ public class PersonaDAO extends SQLiteDataHelper implements IDAO<PersonaDTO>{
             }
         } 
         catch (SQLException e) {
-            throw e; //new PatException(e.getMessage(), getClass().getName(), "readBy()");
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()");
         }
         return oS;
     }
@@ -65,7 +66,7 @@ public class PersonaDAO extends SQLiteDataHelper implements IDAO<PersonaDTO>{
             }
         } 
         catch (SQLException e) {
-            throw e;//new PatException(e.getMessage(), getClass().getName(), "readAll()");
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()");
         }
         return lst; 
     }
@@ -80,7 +81,7 @@ public class PersonaDAO extends SQLiteDataHelper implements IDAO<PersonaDTO>{
             return true;
         } 
         catch (SQLException e) {
-            throw e; //new PatException(e.getMessage(), getClass().getName(), "create()");
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()");
         }
     }
 
@@ -99,7 +100,7 @@ public class PersonaDAO extends SQLiteDataHelper implements IDAO<PersonaDTO>{
             return true;
         } 
         catch (SQLException e) {
-            throw e ;//new PatException(e.getMessage(), getClass().getName(), "update()");
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()");
         }
     }
 
@@ -115,7 +116,7 @@ public class PersonaDAO extends SQLiteDataHelper implements IDAO<PersonaDTO>{
             return true;
         } 
         catch (SQLException e) {
-            throw e; //new PatException(e.getMessage(), getClass().getName(), "delete()");
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()");
         }
     }
 
@@ -131,7 +132,7 @@ public class PersonaDAO extends SQLiteDataHelper implements IDAO<PersonaDTO>{
             }
         } 
         catch (SQLException e) {
-            throw e ; //new PatException(e.getMessage(), getClass().getName(), "getMaxRow()");
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()");
         }
         return 0;
     }
