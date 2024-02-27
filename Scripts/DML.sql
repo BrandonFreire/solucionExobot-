@@ -1,4 +1,4 @@
--- database: ../DataBase/Data.sqlite
+-- database: ../DataBase/Exobot.sqlite
 INSERT INTO ArmaIzquierda(Nombre)
 VALUES ('Metralleta MK-61'),
        ('Bazuca antitanque');
@@ -18,6 +18,11 @@ Values ('Experto en espanol'),
        ('Experto en ingles'),
        ('Soldado'),
        ('Mecatronico');
+
+INSERT INTO Persona (Nombre, IdCargo)
+VALUES ('David', 1),
+       ('Ismael', 2),
+       ('Ivonne', 3);
 
 INSERT INTO Exobots (IdIABot, IdArmaIzquierda, IdArmaDerecha, Nombre, Serie)
 VALUES  (1, 1, 1, 'Exobot-001', 'Serie E001'),
