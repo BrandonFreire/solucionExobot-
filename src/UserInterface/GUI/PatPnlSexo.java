@@ -19,8 +19,8 @@ import javax.swing.event.ListSelectionListener;
 import BusinessLogic.SexoBL;
 import DataAccess.DTO.SexoDTO;
 import UserInterface.CustomerControl.PatButton;
-import UserInterface.CustomerControl.PatLabel;
-import UserInterface.CustomerControl.PatTextBox;
+import UserInterface.CustomerControl.EXOLabel;
+import UserInterface.CustomerControl.EXOTextBox;
 
 public class PatPnlSexo extends JPanel implements ActionListener{
     private Integer idSexo, idMaxSexo;
@@ -173,14 +173,14 @@ public class PatPnlSexo extends JPanel implements ActionListener{
 /************************
  * FormDesing : pat_mic
  ************************/ 
-    private PatLabel  
-            lblTitulo  = new PatLabel("SEXO"          ),
-            lblIdSexo  = new PatLabel("Codigo:      " ),
-            lblNombre  = new PatLabel("Descripción: " ),
-            lblTotalReg= new PatLabel("  0 de 0  "    );
-    private PatTextBox  
-            txtIdSexo  = new PatTextBox (),
-            txtNombre  = new PatTextBox ();
+    private EXOLabel  
+            lblTitulo  = new EXOLabel("SEXO"          ),
+            lblIdSexo  = new EXOLabel("Codigo:      " ),
+            lblNombre  = new EXOLabel("Descripción: " ),
+            lblTotalReg= new EXOLabel("  0 de 0  "    );
+    private EXOTextBox  
+            txtIdSexo  = new EXOTextBox (),
+            txtNombre  = new EXOTextBox ();
     private PatButton  
             btnIni     = new PatButton(" |< "), 
             btnAnt     = new PatButton(" << "),            
@@ -211,9 +211,9 @@ public class PatPnlSexo extends JPanel implements ActionListener{
         // Panel.Paginacion.Tabla
         pnlBtnPage.add(btnIni);       
         pnlBtnPage.add(btnAnt);  
-        pnlBtnPage.add(new PatLabel(" Page: [ "));      
+        pnlBtnPage.add(new EXOLabel(" Page: [ "));      
         pnlBtnPage.add(lblTotalReg);        
-        pnlBtnPage.add(new PatLabel(" ] "));      
+        pnlBtnPage.add(new EXOLabel(" ] "));      
         pnlBtnPage.add(btnSig);
         pnlBtnPage.add(btnFin);
 

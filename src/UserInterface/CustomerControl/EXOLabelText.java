@@ -6,11 +6,11 @@ import UserInterface.IAStyle;
 
 import java.awt.*;
 
-public class PatLabelText extends JPanel{
-    private PatLabel    lblEtiqueta = new PatLabel();
-    private PatTextBox  txtContenido= new PatTextBox();
+public class EXOLabelText extends JPanel{
+    private EXOLabel    lblEtiqueta = new EXOLabel();
+    private EXOTextBox  txtContenido= new EXOTextBox();
 
-    public PatLabelText(String etiqueta) {
+    public EXOLabelText(String etiqueta) {
         setLayout(new BorderLayout());
 
         lblEtiqueta.setCustomizeComponent(  etiqueta, 

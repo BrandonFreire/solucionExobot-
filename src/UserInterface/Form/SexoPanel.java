@@ -6,8 +6,8 @@ import BusinessLogic.SexoBL;
 import DataAccess.DTO.SexoDTO;
 import UserInterface.IAStyle;
 import UserInterface.CustomerControl.PatButton;
-import UserInterface.CustomerControl.PatLabel;
-import UserInterface.CustomerControl.PatTextBox;
+import UserInterface.CustomerControl.EXOLabel;
+import UserInterface.CustomerControl.EXOTextBox;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -168,14 +168,14 @@ public class SexoPanel  extends JPanel implements ActionListener {
 /************************
  * FormDesing : pat_mic
  ************************/ 
-    private PatLabel 
-            lblTitulo   = new PatLabel("SEXO"),
-            lblIdSexo   = new PatLabel(" Codigo:      "),
-            lblNombre   = new PatLabel("*Descripción: "),
-            lblTotalReg = new PatLabel(" 0 de 0 ");
-    private PatTextBox 
-            txtIdSexo   = new PatTextBox(),
-            txtNombre   = new PatTextBox();
+    private EXOLabel 
+            lblTitulo   = new EXOLabel("SEXO"),
+            lblIdSexo   = new EXOLabel(" Codigo:      "),
+            lblNombre   = new EXOLabel("*Descripción: "),
+            lblTotalReg = new EXOLabel(" 0 de 0 ");
+    private EXOTextBox 
+            txtIdSexo   = new EXOTextBox(),
+            txtNombre   = new EXOTextBox();
     private PatButton 
             btnPageIni  = new PatButton(" |< "),
             btnPageAnt  = new PatButton(" << "),
@@ -207,9 +207,9 @@ public class SexoPanel  extends JPanel implements ActionListener {
 
         pnlBtnPage.add(btnPageIni);
         pnlBtnPage.add(btnPageAnt);
-        pnlBtnPage.add(new PatLabel(" Page:( "));
+        pnlBtnPage.add(new EXOLabel(" Page:( "));
         pnlBtnPage.add(lblTotalReg); //cambiar
-        pnlBtnPage.add(new PatLabel(" ) "));
+        pnlBtnPage.add(new EXOLabel(" ) "));
         pnlBtnPage.add(btnPageSig);
         pnlBtnPage.add(btnPageFin);
 
