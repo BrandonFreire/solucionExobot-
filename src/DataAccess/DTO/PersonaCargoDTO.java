@@ -2,24 +2,24 @@ package DataAccess.DTO;
 
 public class PersonaCargoDTO {
     
-    private int idPersona;
+    private Integer idPersona;
     private String nombre;
-    private int idCargo;
+    private Integer idCargo;
     
     public PersonaCargoDTO() {
     }
 
-    public PersonaCargoDTO(int idPersona, String nombre, int idCargo) {
+    public PersonaCargoDTO(Integer idPersona, String nombre, Integer idCargo) {
         this.idPersona = idPersona;
         this.nombre = nombre;
         this.idCargo = idCargo;
     }
 
 
-    public int getIdPersona() {
+    public Integer getIdPersona() {
         return idPersona;
     }
-    public void setIdPersona(int idPersona) {
+    public void setIdPersona(Integer idPersona) {
         this.idPersona = idPersona;
     }
     public String getNombre() {
@@ -28,10 +28,10 @@ public class PersonaCargoDTO {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public int getIdCargo() {
+    public Integer getIdCargo() {
         return idCargo;
     }
-    public void setIdCargo(int idCargo) {
+    public void setIdCargo(Integer idCargo) {
         this.idCargo = idCargo;
     }
 

@@ -1,9 +1,9 @@
 package DataAccess.DTO;
 
 public class PersonaDTO {
-    private int idPersona;
+    private Integer idPersona;
     private String nombre;
-    private int idCargo;
+    private Integer idCargo;
     
     public PersonaDTO() {
     }

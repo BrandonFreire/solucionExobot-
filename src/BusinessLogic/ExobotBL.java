@@ -46,4 +46,8 @@ public class ExobotBL {
     public boolean delete(int IdExobot) throws Exception{
         return exobotDAO.delete(IdExobot);
     }
+
+    public Integer getMaxRow() throws Exception{
+        return exobotDAO.getMaxRow();
+    }
 }
