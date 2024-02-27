@@ -124,4 +124,21 @@ public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO> {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'readAll'");
     }
+
+    public Integer getMaxRow()  throws Exception  {
+        String query =" SELECT COUNT(*) TotalReg FROM Exobots "
+                     +" WHERE   Estado ='A' ";
+        try {
+            Connection conn = openConnection();         // conectar a DB     
+            Statement  stmt = conn.createStatement();   // CRUD : select * ...    
+            ResultSet rs   = stmt.executeQuery(query);  // ejecutar la
+            while (rs.next()) {
+                return rs.getInt(1);                    // TotalReg
+            }
+        } 
+        catch (SQLException e) {
+            throw e;
+        }
+        return 0;
+    }
 }

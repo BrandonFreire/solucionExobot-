@@ -5,10 +5,10 @@ package DataAccess.DTO;
  * @version 1.0
  */
 public class ExobotDTO {
-    private int    IdExaBot;
-    private int    IdIABot;
-    private int    IdArmaIzquierda;
-    private int    IdArmaDerecha;
+    private Integer    IdExaBot;
+    private Integer    IdIABot;
+    private Integer    IdArmaIzquierda;
+    private Integer    IdArmaDerecha;
     private String Nombre;
     private String Serie;
 
@@ -23,7 +23,7 @@ public class ExobotDTO {
      * @param nombre
      * @param serie
      */
-    public ExobotDTO(int IdIABot, int IdArmaIzquierda, int IdArmaDerecha, String nombre, String serie) {
+    public ExobotDTO(Integer IdIABot, Integer IdArmaIzquierda, Integer IdArmaDerecha, String nombre, String serie) {
         this.IdIABot = IdIABot;
         this.IdArmaIzquierda = IdArmaIzquierda;
         this.IdArmaDerecha = IdArmaDerecha;
@@ -35,28 +35,28 @@ public class ExobotDTO {
      * getter/setter
      * @return
      */
-    public int getIdExaBot() {
+    public Integer getIdExaBot() {
         return IdExaBot;
     }
-    public void setIdExaBot(int idExaBot) {
+    public void setIdExaBot(Integer idExaBot) {
         IdExaBot = idExaBot;
     }
-    public int getIdIABot() {
+    public Integer getIdIABot() {
         return IdIABot;
     }
-    public void setIdIABot(int idIABot) {
+    public void setIdIABot(Integer idIABot) {
         IdIABot = idIABot;
     }
-    public int getIdArmaIzquierda() {
+    public Integer getIdArmaIzquierda() {
         return IdArmaIzquierda;
     }
-    public void setIdArmaIzquierda(int idArmaIzquierda) {
+    public void setIdArmaIzquierda(Integer idArmaIzquierda) {
         IdArmaIzquierda = idArmaIzquierda;
     }
-    public int getIdArmaDerecha() {
+    public Integer getIdArmaDerecha() {
         return IdArmaDerecha;
     }
-    public void setIdArmaDerecha(int idArmaDerecha) {
+    public void setIdArmaDerecha(Integer idArmaDerecha) {
         IdArmaDerecha = idArmaDerecha;
     }
     public String getNombre() {
