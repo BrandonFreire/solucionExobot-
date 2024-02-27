@@ -17,7 +17,7 @@ public class MenuPanel extends JPanel {
     public  EXOButton   
             btnHome     = new EXOButton("Home"),
             btnLogin    = new EXOButton("Login"),
-            btnSexo     = new EXOButton("Sexo"),
+            btnExobot     = new EXOButton("Exobot"),
             btnLocalidad= new EXOButton("Localidad"),
             btnTest     = new EXOButton("btnTest");
 
@@ -41,7 +41,7 @@ public class MenuPanel extends JPanel {
         // add-botones
         add(btnHome);
         add(btnLogin);
-        add(btnSexo);
+        add(btnExobot);
         add(btnLocalidad);
         add(btnTest);
 

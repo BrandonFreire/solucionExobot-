@@ -19,6 +19,9 @@ public class ExobotBL {
         exobotDTO = exobotDAO.readBy(IdExaBot);
         return exobotDTO;
     }
+    public List<ExobotDTO> getAll() throws Exception{
+        return exobotDAO.readAll();
+    }
 
     public List<ExobotDTO> getReadSections(int limit, int offset) throws Exception{
         // for (ExobotDTO exobotList : iterable) {
@@ -26,23 +29,13 @@ public class ExobotBL {
         return exobotDAO.readSections(limit, offset);
     }
 
-    public boolean add(int IdIABot, int IdArmaIzquierda, int IdArmaDerecha, String Nombre, String Serie) throws Exception{
-        exobotDTO = new ExobotDTO();
-        // sexo.setNombre(nombre);
-        exobotDTO.setIdIABot(IdIABot);
-        exobotDTO.setIdArmaIzquierda(IdArmaIzquierda);
-        exobotDTO.setIdArmaDerecha(IdArmaDerecha);
-        exobotDTO.setNombre(Nombre);
-        exobotDTO.setSerie(Serie);
+    public boolean create(ExobotDTO exobotDTO) throws Exception{   
         return exobotDAO.create(exobotDTO);
     }
-    public boolean update(String Nombre, String Serie, int IdExaBot) throws Exception{
-        exobotDTO = new ExobotDTO();
-        exobotDTO.setNombre(Nombre);
-        exobotDTO.setSerie(Serie);
-        exobotDTO.setIdExaBot(IdExaBot);
+    public boolean update(ExobotDTO exobotDTO) throws Exception{
         return exobotDAO.update(exobotDTO);
     }
+    
     public boolean delete(int IdExobot) throws Exception{
         return exobotDAO.delete(IdExobot);
     }
@@ -51,3 +44,22 @@ public class ExobotBL {
         return exobotDAO.getMaxRow();
     }
 }
+
+    // public boolean add(int IdIABot, int IdArmaIzquierda, int IdArmaDerecha, String Nombre, String Serie) throws Exception{
+    //     exobotDTO = new ExobotDTO();
+    //     // sexo.setNombre(nombre);
+    //     exobotDTO.setIdIABot(IdIABot);
+    //     exobotDTO.setIdArmaIzquierda(IdArmaIzquierda);
+    //     exobotDTO.setIdArmaDerecha(IdArmaDerecha);
+    //     exobotDTO.setNombre(Nombre);
+    //     exobotDTO.setSerie(Serie);
+    //     return exobotDAO.create(exobotDTO);
+    // }
+
+    // public boolean update(String Nombre, String Serie, int IdExaBot) throws Exception{
+    //     exobotDTO = new ExobotDTO();
+    //     exobotDTO.setNombre(Nombre);
+    //     exobotDTO.setSerie(Serie);
+    //     exobotDTO.setIdExaBot(IdExaBot);
+    //     return exobotDAO.update(exobotDTO);
+    // }

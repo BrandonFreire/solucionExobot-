@@ -16,18 +16,18 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import BusinessLogic.SexoBL;
-import DataAccess.DTO.SexoDTO;
-import UserInterface.CustomerControl.PatButton;
+import BusinessLogic.ExobotBL;
+import DataAccess.DTO.ExobotDTO;
+import UserInterface.CustomerControl.EXOButton;
 import UserInterface.CustomerControl.EXOLabel;
 import UserInterface.CustomerControl.EXOTextBox;
 
-public class PatPnlSexo extends JPanel implements ActionListener{
-    private Integer idSexo, idMaxSexo;
-    private SexoBL  sexoBL  = null;
-    private SexoDTO   sexo  = null;
+public class EXOPnlExobot extends JPanel implements ActionListener{
+    private Integer idExabot, idMaxExabot;
+    private ExobotBL  exobotBL  = null;
+    private ExobotDTO   exobot  = null;
 
-    public PatPnlSexo() throws Exception{
+    public EXOPnlExobot() throws Exception{
         setGridBagLayout();
         loadData();
         showData();
@@ -57,26 +57,26 @@ public class PatPnlSexo extends JPanel implements ActionListener{
     }
     
     private void loadData() throws Exception {
-        idSexo      = 1;
-        sexoBL      = new SexoBL();
-        sexo        = sexoBL.getByIdSexo(idSexo);
-        //idMaxSexo   = sexoBL.getMaxIdSexo();
+        idExabot      = 1;
+        exobotBL      = new ExobotBL();
+        exobot        = exobotBL.getReadBy(idExabot);
+        //idMaxExabot   = exobotBL.getMaxidExabot();
     }
     private void showData() {
-        boolean sexoNull = (sexo == null);
-        txtIdSexo.setText((sexoNull) ? " " : sexo.getIdSexo().toString());            
-        txtNombre.setText((sexoNull) ? " " : sexo.getNombre());
-        //lblTotalReg.setText(idSexo.toString() + " de " + idMaxSexo.toString());
+        boolean exobotNull = (exobot == null);
+        txtidExabot.setText((exobotNull) ? " " : exobot.getIdExaBot().toString());            
+        txtNombre.setText((exobotNull) ? " " : exobot.getNombre());
+        //lblTotalReg.setText(idExabot.toString() + " de " + idMaxExabot.toString());
     }
     private void btnNuevoClick(ActionEvent e) {
-        sexo = null;
+        exobot = null;
         showData();
     } 
     private void btnEliminarClick(ActionEvent e) throws Exception {
         if (JOptionPane.showConfirmDialog(this, "¿Está seguro que desea Eliminar?", "Eliminar...",
         JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                
-            if(!sexoBL.delete(sexo.getIdSexo()))
+            if(!exobotBL.delete(exobot.getIdExaBot()))
                 JOptionPane.showMessageDialog(this, "Error al eliminar...!", "ERROR", JOptionPane.OK_OPTION);
 
             loadData();
@@ -85,18 +85,10 @@ public class PatPnlSexo extends JPanel implements ActionListener{
         }
     }
     private void btnGuardarClick(ActionEvent e) throws  Exception {
-        boolean sexoNull = (sexo == null);
-        if (JOptionPane.showConfirmDialog(this, "¿Seguro que desea guardar?", (sexoNull)?"Agregar...": "Actualizar...", 
+        boolean exobotNull = (exobot == null);
+        if (JOptionPane.showConfirmDialog(this, "¿Seguro que desea guardar?", (exobotNull)?"Agregar...": "Actualizar...", 
             JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            
-            // if (sexoNull)
-            //     sexo = new SexoBL(txtNombre.getText().toString());
-            // else
-            //     sexo.setNombre(txtNombre.getText().toString());
-
-            // if(!((sexoNull) ? sexoBL.createSexo(sexo) : sexoBL.updateSexo(sexo)))
-            //     JOptionPane.showMessageDialog(this, "Error al guardar...!", "ERROR", JOptionPane.OK_OPTION);
-            
+          
             loadData();
             showData();
             showTable();
@@ -104,12 +96,15 @@ public class PatPnlSexo extends JPanel implements ActionListener{
     } 
     private void showTable() throws Exception {
         String[] header = {"Id", "Nombre", "Estado"};
-        Object[][] data = new Object[sexoBL.getAll().size()][3];  
+        Object[][] data = new Object[exobotBL.getAll().size()][6];  
         int index = 0;
-        for(SexoDTO s : sexoBL.getAll()) {
-            data[index][0] = s.getIdSexo();
-            data[index][1] = s.getNombre();
-            data[index][2] = s.getEstado();
+        for(ExobotDTO s : exobotBL.getAll()) {
+            data[index][0] = s.getIdExaBot();
+            data[index][1] = s.getIdIABot();
+            data[index][2] = s.getIdArmaDerecha();
+            data[index][3] = s.getIdArmaIzquierda();
+            data[index][4] = s.getNombre();
+            data[index][5] = s.getSerie();
             index++;
         }
         
@@ -124,7 +119,7 @@ public class PatPnlSexo extends JPanel implements ActionListener{
 
         //table.setBorder(border);
         // pnlTabla.setBorder( BorderFactory.createTitledBorder(
-        //                     BorderFactory.createEtchedBorder(), " SEXO ", TitledBorder.CENTER, TitledBorder.TOP));
+        //                     BorderFactory.createEtchedBorder(), " exobot ", TitledBorder.CENTER, TitledBorder.TOP));
       
         pnlTabla.removeAll();
         pnlTabla.add(table);
@@ -137,14 +132,14 @@ public class PatPnlSexo extends JPanel implements ActionListener{
           
                 int col = 0;
                 int row = table.getSelectedRow();
-                String strIdSexo = table.getModel().getValueAt(row, col).toString();
+                String stridExabot = table.getModel().getValueAt(row, col).toString();
 
-                idSexo = Integer.parseInt(strIdSexo);
+                idExabot = Integer.parseInt(stridExabot);
                 try {
-                    sexo    = sexoBL.getByIdSexo(idSexo);
+                    exobot    = exobotBL.getReadBy(idExabot);
                     showData(); 
                 } catch (Exception e1) { }  
-                System.out.println("Tabla.Selected: " + strIdSexo);
+                System.out.println("Tabla.Selected: " + stridExabot);
             }
         });
     }
@@ -153,44 +148,37 @@ public class PatPnlSexo extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == btnIni)
-            idSexo  = 1;
-        if(e.getSource() == btnAnt  &&  (idSexo>1) )
-            idSexo--;
-        if(e.getSource() == btnSig  &&  (idSexo<idMaxSexo))
-            idSexo++;
+            idExabot  = 1;
+        if(e.getSource() == btnAnt  &&  (idExabot>1) )
+            idExabot--;
+        if(e.getSource() == btnSig  &&  (idExabot<idMaxExabot))
+            idExabot++;
         if(e.getSource() == btnFin)
-            idSexo = idMaxSexo;
+            idExabot = idMaxExabot;
 
-        // try {
-        //     if(e.getSource() == btnGuardar)
-        //         btnGuardarClick(e);
-        //     sexo    = sexoBL.getSexoById(idSexo);  
-        //     showData(); 
-        // } catch (Exception ex) {}
-        // System.out.println(e.getActionCommand());
     }
 
 /************************
  * FormDesing : pat_mic
  ************************/ 
     private EXOLabel  
-            lblTitulo  = new EXOLabel("SEXO"          ),
-            lblIdSexo  = new EXOLabel("Codigo:      " ),
+            lblTitulo  = new EXOLabel("exobot"          ),
+            lblidExabot  = new EXOLabel("Codigo:      " ),
             lblNombre  = new EXOLabel("Descripción: " ),
             lblTotalReg= new EXOLabel("  0 de 0  "    );
     private EXOTextBox  
-            txtIdSexo  = new EXOTextBox (),
+            txtidExabot  = new EXOTextBox (),
             txtNombre  = new EXOTextBox ();
-    private PatButton  
-            btnIni     = new PatButton(" |< "), 
-            btnAnt     = new PatButton(" << "),            
-            btnSig     = new PatButton(" >> "),
-            btnFin     = new PatButton(" >| ");
-    private PatButton
-            btnNuevo   = new PatButton("Nuevo"),            
-            btnGuardar = new PatButton("Guardar"),
-            btnCancelar= new PatButton("Cancelar"),
-            btnEliminar= new PatButton("Eliminar");
+    private EXOButton  
+            btnIni     = new EXOButton(" |< "), 
+            btnAnt     = new EXOButton(" << "),            
+            btnSig     = new EXOButton(" >> "),
+            btnFin     = new EXOButton(" >| ");
+    private EXOButton
+            btnNuevo   = new EXOButton("Nuevo"),            
+            btnGuardar = new EXOButton("Guardar"),
+            btnCancelar= new EXOButton("Cancelar"),
+            btnEliminar= new EXOButton("Eliminar");
     private JPanel 
             pnlTabla   = new JPanel(),
             pnlBtnCRUD = new JPanel(new FlowLayout()),
@@ -206,7 +194,7 @@ public class PatPnlSexo extends JPanel implements ActionListener{
     public void setGridBagLayout(){
         //setLayout(new GridBagLayout());
         GridBagConstraints gbc= new GridBagConstraints();
-        txtIdSexo.setEnabled(false);
+        txtidExabot.setEnabled(false);
         
         // Panel.Paginacion.Tabla
         pnlBtnPage.add(btnIni);       
@@ -255,8 +243,8 @@ public class PatPnlSexo extends JPanel implements ActionListener{
         gbc.gridwidth=1;    
         add(new JLabel("■ Sección de registro: "), gbc);  
 
-        gbc.gridy = 5;       gbc.gridx=0;     add(lblIdSexo,  gbc);   
-        gbc.gridy = 5;       gbc.gridx=1;     add(txtIdSexo,  gbc);   
+        gbc.gridy = 5;       gbc.gridx=0;     add(lblidExabot,  gbc);   
+        gbc.gridy = 5;       gbc.gridx=1;     add(txtidExabot,  gbc);   
 
         gbc.gridy = 6;       gbc.gridx=0;     add(lblNombre, gbc);        
         gbc.gridy = 6;       gbc.gridx=1;     add(txtNombre, gbc);
@@ -267,18 +255,7 @@ public class PatPnlSexo extends JPanel implements ActionListener{
         gbc.insets    = new Insets(30,0,0,0); 
         gbc.fill=GridBagConstraints.HORIZONTAL;
         add(pnlBtnCRUD, gbc);
-        
-        //  gbc.gridy=8;     gbc.gridx=2;
-        //  add(b5,gbc);
-        
-        //  gbc.gridy=9;     gbc.gridx=2;
-        //  add(b6,gbc);
 
-        //  gbc.gridy=7;        gbc.gridx=0;
-        //  gbc.gridwidth=2;
-        //  gbc.gridheight=2;
-        //  gbc.fill=GridBagConstraints.BOTH;
-        //  add(b4,gbc);
     }
 
 }

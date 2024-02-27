@@ -87,7 +87,7 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
         try {
             if (IAStyle.showConfirmYesNo("Seguro que desea Eliminar?")) {
 
-                if (!exobotBL.delete(exobot.getIdSexo()))
+                if (!exobotBL.delete(exobot.getIdExaBot()))
                     throw new Exception("Error al eliminar...!");
     
                 loadRow();
@@ -118,19 +118,23 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
         if (e.getSource() == btnRowFin)
             idExobot = idMaxExobot;
         try {
-            exobot    = exobotBL.getByIdSexo(idExobot);  
+            exobot    = exobotBL.getReadBy(idExobot);  
             showRow(); 
         } catch (Exception ex) {}
     }
 
     private void showTable() throws Exception {
         String[] header = {"Id", "Nombre", "Estado"};
-        Object[][] data = new Object[exobotBL.getAll().size()][3];
+        Object[][] data = new Object[exobotBL.getAll().size()][6];
         int index = 0;
-        for (SexoDTO s : exobotBL.getAll()) {
-            data[index][0] = s.getIdSexo();
-            data[index][1] = s.getNombre();
-            data[index][2] = s.getEstado();
+        for (ExobotDTO s : exobotBL.getAll()) {
+            data[index][0] = s.getIdExaBot();
+            data[index][1] = s.getIdIABot();
+            data[index][2] = s.getIdArmaDerecha();
+            data[index][3] = s.getIdArmaIzquierda();
+            data[index][4] = s.getNombre();
+            data[index][5] = s.getSerie();
+
             index++;
         }
 
@@ -155,7 +159,7 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
                     String strIdSexo = table.getModel().getValueAt(row, 0).toString();
                     idExobot = Integer.parseInt(strIdSexo);
                     try {
-                        exobot = exobotBL.getByIdSexo(idExobot);
+                        exobot = exobotBL.getReadBy(idExobot);
                         showRow();
                     } catch (Exception ignored) {
                     }

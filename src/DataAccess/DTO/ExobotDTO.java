@@ -23,6 +23,11 @@ public class ExobotDTO {
      * @param nombre
      * @param serie
      */
+
+    public ExobotDTO(String nombre) {
+        this.Nombre = nombre;
+    }
+
     public ExobotDTO(Integer IdIABot, Integer IdArmaIzquierda, Integer IdArmaDerecha, String nombre, String serie) {
         this.IdIABot = IdIABot;
         this.IdArmaIzquierda = IdArmaIzquierda;
