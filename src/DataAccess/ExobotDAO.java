@@ -22,6 +22,7 @@ public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO>{
                      +" ,Nombre " 
                      +" ,Serie " 
                      +" ,Estado " 
+                     +" FROM Exobot"
                      +" WHERE   Estado ='A' AND IdExaBot =   "+ id.toString() ;
         try {
             Connection conn = openConnection();         // conectar a DB     
@@ -52,7 +53,8 @@ public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO>{
                      +" ,IdArmaIzquierda " 
                      +" ,Nombre " 
                      +" ,Serie " 
-                     +" ,Estado " 
+                     +" ,Estado "
+                     +" FROM Exobot"
                      +" WHERE   Estado ='A'";
 
         try {

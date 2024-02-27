@@ -44,7 +44,7 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
     private void loadRow() throws Exception {
         idExobot      = 1;
         exobotBL      = new ExobotBL();
-        exobot        = exobotBL.getReadBy(idExobot);
+        exobot        = exobotBL.getByIdExobot(idExobot);
         idMaxExobot   = exobotBL.getMaxRow();
     }
 
@@ -121,7 +121,7 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
         if (e.getSource() == btnRowFin)
             idExobot = idMaxExobot;
         try {
-            exobot    = exobotBL.getReadBy(idExobot);  
+            exobot    = exobotBL.getByIdExobot(idExobot);  
             showRow(); 
         } catch (Exception ex) {}
     }
@@ -133,8 +133,8 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
         for (ExobotDTO s : exobotBL.getAll()) {
             data[index][0] = s.getIdExaBot();
             data[index][1] = s.getIdIABot();
-            data[index][2] = s.getIdArmaDerecha();
-            data[index][3] = s.getIdArmaIzquierda();
+            data[index][2] = s.getIdAramaDerecha();
+            data[index][3] = s.getIdAramaIzquierda();
             data[index][4] = s.getNombre();
             data[index][5] = s.getSerie();
 
@@ -162,7 +162,7 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
                     String strIdSexo = table.getModel().getValueAt(row, 0).toString();
                     idExobot = Integer.parseInt(strIdSexo);
                     try {
-                        exobot = exobotBL.getReadBy(idExobot);
+                        exobot = exobotBL.getByIdExobot(idExobot);
                         showRow();
                     } catch (Exception ignored) {
                     }
@@ -208,8 +208,6 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         
-        txtIdSexo.setEnabled(false);
-        txtIdSexo.setBorderLine();
         txtNombre.setBorderLine();
 
         pnlBtnPage.add(btnPageIni);
@@ -282,7 +280,6 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
         gbc.gridx = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = GridBagConstraints.REMAINDER; // Indica que este componente ocupa toda la fila
-        add(txtIdSexo, gbc);
 
         gbc.gridy = 6;
         gbc.gridx = 0;
