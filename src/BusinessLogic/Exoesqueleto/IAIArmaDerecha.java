@@ -5,7 +5,7 @@
  */
 package BusinessLogic.Exoesqueleto;
 public interface IAIArmaDerecha {
-
+    
     void iaActivarArma(int iaTiempo);
     
 }

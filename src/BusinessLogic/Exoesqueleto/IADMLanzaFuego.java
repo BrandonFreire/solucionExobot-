@@ -5,6 +5,7 @@
  * @version 10.0
  */
 package BusinessLogic.Exoesqueleto;
+
 public class IADMLanzaFuego implements IAIArmaDerecha {
 
     private String iaLongitud;

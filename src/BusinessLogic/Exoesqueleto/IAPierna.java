@@ -7,7 +7,7 @@ package BusinessLogic.Exoesqueleto;
 public class IAPierna {
 
     public void iaCorrer(int iaVelocidad) {
-        if(iaVelocidad<=200 &&  iaVelocidad!=0){
+        if(iaVelocidad <= 200 &&  iaVelocidad != 0){
             System.out.println("Estoy corriendo a una velocidad de " + iaVelocidad +"km/h.");
         }else{
             System.out.println("No puedo correr con esa velocidad, es demasiado rapido");

@@ -6,7 +6,7 @@
  */
 package BusinessLogic.Exoesqueleto;
 public class IADMLaser implements IAIArmaDerecha {
-
+    
     public IADMLaser(){
         System.out.println("Laser");
     }

@@ -29,7 +29,7 @@ public class IAMecatronico extends DMHumano {
         }
 
         System.out.println("\nEl mecatronico está ensamblando a los Exobots...");
-
+        
         for (int i = 0; i < dmSoldados.size(); i++) {
             if (dmSoldados.get(i).dmGetHabilidadBrazoDer() == true
                     && dmSoldados.get(i).dmGetHabilidadBrazoIzq() == true)

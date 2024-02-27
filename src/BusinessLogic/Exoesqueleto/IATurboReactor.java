@@ -6,7 +6,7 @@
 package BusinessLogic.Exoesqueleto;
 public class IATurboReactor {
 
-    public void iaVolar(IAFuenteDePoder iaFuenteDePoder){
+    public void iaVolar (IAFuenteDePoder iaFuenteDePoder) {
         System.out.println("El exobot esta usando el turbo reactor y esta volando.");
     }
 }

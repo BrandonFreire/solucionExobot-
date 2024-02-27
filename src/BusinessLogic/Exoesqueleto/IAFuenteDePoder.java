@@ -5,7 +5,7 @@
  */
 package BusinessLogic.Exoesqueleto;
 public class IAFuenteDePoder {
-
+    
     private static final int ENERGIA_MAXIMA = 100;
     private int iaEnergiaFP;
 

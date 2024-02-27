@@ -10,7 +10,7 @@ import BusinessLogic.EjercitoRuso.IAIHumanoExtremidad;
 import BusinessLogic.InteligenciaArtificial.IAIABot;
 
 public class IAIFExobot extends IAIABot implements IAIHumanoExtremidad, DMITecnicoEspanol, IFITecnicoIngles {
-
+    
     private Boolean eIFInicializado = false;
     private String dmCodigoSeguridad;
     private IAFuenteDePoder eIAFuentePoder;
