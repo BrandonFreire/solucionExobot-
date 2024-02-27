@@ -20,6 +20,7 @@ public class MenuPanel extends JPanel {
             btnExobot   = new EXOButton("Exobot"),
             btnExobot2  = new EXOButton("Exobot2"),
             btnTest     = new EXOButton("btnTest");
+    public Object btnSexo;
 
     public MenuPanel(){
         customizeComponent();
