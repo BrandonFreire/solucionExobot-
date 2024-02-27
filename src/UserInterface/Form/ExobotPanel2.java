@@ -15,12 +15,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class SexoPanel  extends JPanel implements ActionListener {
-    private Integer idSexo = 0, idMaxSexo=0;
-    private SexoBL sexoBL = null;
-    private SexoDTO sexo = null;
+public class ExobotPanel2  extends JPanel implements ActionListener {
+    private Integer idPersona = 0, idMaxPersona=0;
+    private PersonaBL personaBL = null;
+    private PersonaDTO persona = null;
 
-    public SexoPanel() {
+    public ExobotPanel2() {
         try {
             customizeComponent();
             loadRow();
@@ -42,36 +42,36 @@ public class SexoPanel  extends JPanel implements ActionListener {
     }
 
     private void loadRow() throws Exception {
-        idSexo      = 1;
-        sexoBL      = new SexoBL();
-        sexo        = sexoBL.getByIdSexo(idSexo);
-        idMaxSexo   = sexoBL.getMaxRow();
+        idPersona      = 1;
+        personaBL      = new PersonaBL();
+        persona        = personaBL.getByIdSexo(idPersona);
+        idMaxPersona   = personaBL.getMaxRow();
     }
 
     private void showRow() {
-        boolean sexoNull = (sexo == null);
-        txtIdSexo.setText((sexoNull) ? " " : sexo.getIdSexo().toString());
-        txtNombre.setText((sexoNull) ? " " : sexo.getNombre());
-        lblTotalReg.setText(idSexo.toString() + " de " + idMaxSexo.toString());
+        boolean sexoNull = (persona == null);
+        txtIdSexo.setText((sexoNull) ? " " : persona.getIdPersona().toString());
+        txtNombre.setText((sexoNull) ? " " : persona.getNombre());
+        lblTotalReg.setText(idPersona.toString() + " de " + idMaxPersona.toString());
     }
 
     private void btnNuevoClick() {
-        sexo = null;
+        persona = null;
         showRow();
     } 
     
     private void btnGuardarClick() {
-        boolean sexoNull = (sexo == null);
+        boolean personaNull = (persona == null);
         // String buttonText = ((JButton) e.getSource()).getText();
         try {
-            if (IAStyle.showConfirmYesNo("¿Seguro que desea " + ((sexoNull) ? "AGREGAR ?" : "ACTUALIZAR ?"))){
+            if (IAStyle.showConfirmYesNo("¿Seguro que desea " + ((personaNull) ? "AGREGAR ?" : "ACTUALIZAR ?"))){
             
-                if (sexoNull)
-                    sexo = new SexoDTO(txtNombre.getText());
+                if (personaNull)
+                    persona = new PersonaDTO(txtNombre.getText());
                 else
-                    sexo.setNombre(txtNombre.getText());
+                    persona.setNombre(txtNombre.getText());
     
-                if(!((sexoNull) ? sexoBL.create(sexo) : sexoBL.update(sexo)))
+                if(!((personaNull) ? personaBL.create(persona) : personaBL.update(persona)))
                     IAStyle.showMsgError("Error al guardar...!");
     
                 loadRow();
@@ -87,7 +87,7 @@ public class SexoPanel  extends JPanel implements ActionListener {
         try {
             if (IAStyle.showConfirmYesNo("Seguro que desea Eliminar?")) {
 
-                if (!sexoBL.delete(sexo.getIdSexo()))
+                if (!personaBL.delete(persona.getIdPersona()))
                     throw new Exception("Error al eliminar...!");
     
                 loadRow();
@@ -101,7 +101,7 @@ public class SexoPanel  extends JPanel implements ActionListener {
 
     private void btnCancelarClick() {
         try {
-            if(sexo == null)
+            if(persona == null)
                 loadRow();
             showRow();
         } catch (Exception e) {}
@@ -110,25 +110,25 @@ public class SexoPanel  extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnRowIni)
-            idSexo = 1;
-        if (e.getSource() == btnRowAnt && (idSexo > 1))
-            idSexo--;
-        if (e.getSource() == btnRowSig && (idSexo < idMaxSexo))
-            idSexo++;
+            idPersona = 1;
+        if (e.getSource() == btnRowAnt && (idPersona > 1))
+            idPersona--;
+        if (e.getSource() == btnRowSig && (idPersona < idMaxPersona))
+            idPersona++;
         if (e.getSource() == btnRowFin)
-            idSexo = idMaxSexo;
+            idPersona = idMaxPersona;
         try {
-            sexo    = sexoBL.getByIdSexo(idSexo);  
+            persona    = personaBL.getByIdSexo(idPersona);  
             showRow(); 
         } catch (Exception ex) {}
     }
 
     private void showTable() throws Exception {
         String[] header = {"Id", "Nombre", "Estado"};
-        Object[][] data = new Object[sexoBL.getAll().size()][3];
+        Object[][] data = new Object[personaBL.getAll().size()][3];
         int index = 0;
-        for (SexoDTO s : sexoBL.getAll()) {
-            data[index][0] = s.getIdSexo();
+        for (PersonaDTO s : personaBL.getAll()) {
+            data[index][0] = s.getIdPersona();
             data[index][1] = s.getNombre();
             data[index][2] = s.getEstado();
             index++;
@@ -153,9 +153,9 @@ public class SexoPanel  extends JPanel implements ActionListener {
                 int col = table.columnAtPoint(e.getPoint());
                 if (row >= 0 && col >= 0) {
                     String strIdSexo = table.getModel().getValueAt(row, 0).toString();
-                    idSexo = Integer.parseInt(strIdSexo);
+                    idPersona = Integer.parseInt(strIdSexo);
                     try {
-                        sexo = sexoBL.getByIdSexo(idSexo);
+                        persona = personaBL.getByIdSexo(idPersona);
                         showRow();
                     } catch (Exception ignored) {
                     }
@@ -176,21 +176,21 @@ public class SexoPanel  extends JPanel implements ActionListener {
     private EXOTextBox 
             txtIdSexo   = new EXOTextBox(),
             txtNombre   = new EXOTextBox();
-    private PatButton 
-            btnPageIni  = new PatButton(" |< "),
-            btnPageAnt  = new PatButton(" << "),
-            btnPageSig  = new PatButton(" >> "),
-            btnPageFin  = new PatButton(" >| "),
+    private EXOButton 
+            btnPageIni  = new EXOButton(" |< "),
+            btnPageAnt  = new EXOButton(" << "),
+            btnPageSig  = new EXOButton(" >> "),
+            btnPageFin  = new EXOButton(" >| "),
 
-            btnRowIni   = new PatButton(" |< "),
-            btnRowAnt   = new PatButton(" << "),
-            btnRowSig   = new PatButton(" >> "),
-            btnRowFin   = new PatButton(" >| "),
+            btnRowIni   = new EXOButton(" |< "),
+            btnRowAnt   = new EXOButton(" << "),
+            btnRowSig   = new EXOButton(" >> "),
+            btnRowFin   = new EXOButton(" >| "),
 
-            btnNuevo    = new PatButton("Nuevo"),
-            btnGuardar  = new PatButton("Guardar"),
-            btnCancelar = new PatButton("Cancelar"),
-            btnEliminar = new PatButton("Eliminar");
+            btnNuevo    = new EXOButton("Nuevo"),
+            btnGuardar  = new EXOButton("Guardar"),
+            btnCancelar = new EXOButton("Cancelar"),
+            btnEliminar = new EXOButton("Eliminar");
     private JPanel 
             pnlTabla    = new JPanel(),
             pnlBtnRow   = new JPanel(new FlowLayout()),

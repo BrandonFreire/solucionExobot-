@@ -3,6 +3,7 @@
 
 import BusinessLogic.ExobotBL;
 import DataAccess.DTO.ExobotDTO;
+import UserInterface.Form.MainForm;
 
 /**
  * @autor Ivonne Ayala
@@ -41,12 +42,15 @@ import DataAccess.DTO.ExobotDTO;
         //     System.out.println(eDTO.toString());
         // }
         // System.out.println(exoDAO.readBy(5).toString());
-        ExobotBL exobotBL = new ExobotBL();
+        // ExobotBL exobotBL = new ExobotBL();
         // exobotBL.delete(1);
         // exobotBL.add(1, 2, 1, "Ismael", "Serie 3000");
         // exobotBL.delete(1002);
-        for (ExobotDTO s : exobotBL.getReadSections(20, 0)) {
-            System.out.println(s.toString());
-        }
+        // for (ExobotDTO s : exobotBL.getReadSections(20, 0)) {
+        //     System.out.println(s.toString());
+        // }
+
+               MainForm frmMain = new MainForm("IABot");
+
     }
 }
