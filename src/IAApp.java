@@ -10,10 +10,9 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneDarkIJT
 import BusinessLogic.ExobotBL;
 import DataAccess.DTO.ExobotDTO;
 import UserInterface.Form.MainForm;
-<<<<<<< HEAD
+
 import UserInterface.Form.SplashScreenForm;
-=======
->>>>>>> 3adee327620aa0695fdd04e1ba7ef6592f81ecde
+
 
 /**
  * @autor Ivonne Ayala
@@ -53,20 +52,13 @@ import UserInterface.Form.SplashScreenForm;
         // }
         // System.out.println(exoDAO.readBy(5).toString());
         // ExobotBL exobotBL = new ExobotBL();
-<<<<<<< HEAD
-        // // exobotBL.delete(1);
-        // // exobotBL.add(1, 2, 1, "Ismael", "Serie 3000");
-        // // exobotBL.delete(1002);
-=======
         // exobotBL.delete(1);
         // exobotBL.add(1, 2, 1, "Ismael", "Serie 3000");
         // exobotBL.delete(1002);
->>>>>>> 3adee327620aa0695fdd04e1ba7ef6592f81ecde
         // for (ExobotDTO s : exobotBL.getReadSections(20, 0)) {
         //     System.out.println(s.toString());
         // }
 
-<<<<<<< HEAD
         FlatLightLaf.setup();
         FlatLightLaf.supportsNativeWindowDecorations();
         try {
@@ -77,9 +69,5 @@ import UserInterface.Form.SplashScreenForm;
     
        SplashScreenForm.show();
        MainForm frmMain = new MainForm("IABot");
-=======
-               MainForm frmMain = new MainForm("IABot");
-
->>>>>>> 3adee327620aa0695fdd04e1ba7ef6592f81ecde
     }
 }

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import DataAccess.DTO.ExobotDTO;
+import Framework.EXOException;
 /**
  * @author Ismael Freire
  * @date 24/02/2024
@@ -37,7 +38,7 @@ public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO> {
                         , rs.getString(5)); // FechaModifica
             }
         } catch (SQLException e) {
-            throw e; // new PatException(e.getMessage(), getClass().getName(), "readBy()");
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()");
         }
         return exobotDTO;
     }
@@ -61,7 +62,7 @@ public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO> {
                 list.add(eDTO);
             }
         } catch (SQLException e) {
-            throw e; // new Exception(getClass() + "getMaxIdSexo");
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()"); // new Exception(getClass() + "getMaxIdSexo");
         }
         return list;
     }
@@ -80,7 +81,7 @@ public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO> {
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            throw e; // new PatException(e.getMessage(), getClass().getName(), "create()");
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()"); // new PatException(e.getMessage(), getClass().getName(), "create()");
         }
     }
 
@@ -99,7 +100,7 @@ public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO> {
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            throw e; // new PatException(e.getMessage(), getClass().getName(), "update()");
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()"); // new PatException(e.getMessage(), getClass().getName(), "update()");
         }
     }
 
@@ -115,7 +116,7 @@ public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw e; //ew PatException(e.getMessage(), getClass().getName(), "delete()");
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()"); //ew PatException(e.getMessage(), getClass().getName(), "delete()");
         }
     }
 
@@ -137,7 +138,7 @@ public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO> {
             }
         } 
         catch (SQLException e) {
-            throw e;
+            throw new EXOException(e.getMessage(), getClass().getName(), "readAll()");
         }
         return 0;
     }
