@@ -15,9 +15,8 @@ public class MainForm extends JFrame{
     public MainForm(String tilteApp) {
         customizeComponent(tilteApp);
         pnlMenu.btnHome.addActionListener(      e -> setPanel(new MainPanel())); 
-        pnlMenu.btnExobot.addActionListener(      e -> setPanel(new ExoBotPanel1()));  
-        pnlMenu.btnExobot2.addActionListener(      e -> setPanel(new ExobotPanel2()));  
-        //pnlMenu.btnLocalidad.addActionListener( e -> setPanel(new MainPanel())); 
+        pnlMenu.btnSexo.addActionListener(      e -> setPanel(new ExobotPanel2()));  
+        pnlMenu.btnLocalidad.addActionListener( e -> setPanel(new MainPanel())); 
         //agregar
         pnlMenu.btnTest.addActionListener( e -> { IAStyle.showMsgError("mensaje de error");}); 
     }
