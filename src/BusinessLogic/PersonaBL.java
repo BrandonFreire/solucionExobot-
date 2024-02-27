@@ -27,4 +27,8 @@ public class PersonaBL {
     public boolean delete(int idPersona) throws Exception{
         return pDAO.delete(idPersona);
     }
+
+    public Integer getMaxRow() throws Exception{
+        return pDAO.getMaxRow();
+    }
 }
