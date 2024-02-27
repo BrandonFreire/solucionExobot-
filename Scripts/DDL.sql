@@ -1,4 +1,4 @@
--- database: ../DataBase/Data.sqlite
+-- database: ../DataBase/Exobot.sqlite
 DROP TABLE IF EXISTS IABot;
 DROP TABLE IF EXISTS Exobots;
 DROP TABLE IF EXISTS ArmaIzquierda;
@@ -20,8 +20,7 @@ CREATE TABLE Exobots (
     Nombre            TEXT NOT NULL,
     Serie             TEXT NOT NULL,
     Estado            VARCHAR(1)  NOT NULL DEFAULT('A'),
-    CONSTRAINT fk_IABot FOREIGN KEY (IdI
-    ABot) REFERENCES IABot(IdIABot),
+    CONSTRAINT fk_IABot FOREIGN KEY (IdIABot) REFERENCES IABot(IdIABot),
     CONSTRAINT fk_ArmaIzquierda FOREIGN KEY (IdArmaIzquierda) REFERENCES ArmaIzquierda(IdArmaIzquierda),
     CONSTRAINT fk_ArmaDerecha FOREIGN KEY (IdArmaDerecha) REFERENCES ArmaDerecha(IdArmaDerecha)
 );
@@ -53,3 +52,10 @@ CREATE TABLE Persona (
     ,FechaMod   DATETIME DEFAULT CURRENT_TIMESTAMP
     ,CONSTRAINT fk_IdCargo FOREIGN KEY (IdCargo) REFERENCES Cargo(IdCargo)
 );
+
+
+SELECT pe.IdPersona IdPersona, pe.Nombre Nombre, ca.Descp Cargo
+FROM Persona   pe 
+JOIN Cargo     ca ON pe.IdCargo = ca.IdCargo
+WHERE   pe.Estado = 'A'
+AND     ca.Estado = 'A';
