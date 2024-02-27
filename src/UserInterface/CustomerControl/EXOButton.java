@@ -34,9 +34,9 @@ public class EXOButton  extends JButton implements MouseListener {
         setFocusPainted(false);
         setBorderPainted(false);
         setContentAreaFilled(false);
-        setForeground(IAStyle.COLOR_FONT);
+        setForeground(Color.WHITE); // Cambia el color del texto a azul (puedes ajustar el color según tus preferencias)
         setHorizontalAlignment(IAStyle.ALIGNMENT_LEFT);
-        setFont(IAStyle.FONT);
+        setFont(new Font("Arial", Font.BOLD, 18)); // Cambia la fuente, el estilo (negrita) y el tamaño (14)
         
         setCursor(new Cursor(Cursor.HAND_CURSOR));
     }

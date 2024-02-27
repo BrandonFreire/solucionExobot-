@@ -28,7 +28,6 @@ public class ExobotBL {
         // }
         return exobotDAO.readSections(limit, offset);
     }
-
     public boolean create(ExobotDTO exobotDTO) throws Exception{   
         return exobotDAO.create(exobotDTO);
     }
