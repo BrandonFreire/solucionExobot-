@@ -13,11 +13,11 @@ import UserInterface.IAStyle;
 
 import javax.swing.ImageIcon;
 
-public class PatButton  extends JButton implements MouseListener {
-    public PatButton(String text){
+public class EXOButton  extends JButton implements MouseListener {
+    public EXOButton(String text){
         customizeComponent(text);
     }
-    public PatButton(String text, String iconPath){
+    public EXOButton(String text, String iconPath){
         customizeComponent(text, iconPath);
     }
 

@@ -23,19 +23,19 @@ import javax.swing.border.LineBorder;
 
 public class LayoutEjemplos {
 
-    private PatLabel  
-            lblTitulo = new PatLabel("SEXO"          ), //, Color.BLACK, new Font("MesloLGL Nerd Font", Font.BOLD ,  20)),
-            lblIdSexo = new PatLabel("Codigo:      " ),
-            lblNombre = new PatLabel("Descripción: " ),
-            lblTotalReg=new PatLabel("  0 de 0  "    );
+    private EXOLabel  
+            lblTitulo = new EXOLabel("SEXO"          ), //, Color.BLACK, new Font("MesloLGL Nerd Font", Font.BOLD ,  20)),
+            lblIdSexo = new EXOLabel("Codigo:      " ),
+            lblNombre = new EXOLabel("Descripción: " ),
+            lblTotalReg=new EXOLabel("  0 de 0  "    );
     private TextField  
             txtIdSexo = new TextField (" ",20),
             txtNombre = new TextField (" ",20);
-    private PatButton
-            btnIni = new PatButton(" |< "), 
-            btnAnt = new PatButton(" << "),            
-            btnSig = new PatButton(" >> "),
-            btnFin = new PatButton(" >| ");
+    private EXOButton
+            btnIni = new EXOButton(" |< "), 
+            btnAnt = new EXOButton(" << "),            
+            btnSig = new EXOButton(" >> "),
+            btnFin = new EXOButton(" >| ");
     private JButton
             btnNuevo = new JButton("Nuevo"),            
             btnGuardar = new JButton("Guardar"),
@@ -346,14 +346,14 @@ public class LayoutEjemplos {
         //     btn.setLocation(2, i*30);
         //     add(btn);
         // }
-        PatLabel 
-        titulo      =new PatLabel("Compre algo ahora"),
-        nombre      =new PatLabel("Nombre:"),
-        direccion   =new PatLabel("Dirección:"),
-        pago        =new PatLabel("Método de pago:"),
-        telefono    =new PatLabel("Teléfono:"),
-        ciudad      =new PatLabel("Ciudad:"),
-        provincia   =new PatLabel("Provincia:"); //Color.DARK_GRAY,
+        EXOLabel 
+        titulo      =new EXOLabel("Compre algo ahora"),
+        nombre      =new EXOLabel("Nombre:"),
+        direccion   =new EXOLabel("Dirección:"),
+        pago        =new EXOLabel("Método de pago:"),
+        telefono    =new EXOLabel("Teléfono:"),
+        ciudad      =new EXOLabel("Ciudad:"),
+        provincia   =new EXOLabel("Provincia:"); //Color.DARK_GRAY,
                                 //     new Font("MesloLGL Nerd Font", Font.BOLD | Font.LAYOUT_RIGHT_TO_LEFT, 12));
 
         JTextField 
@@ -394,7 +394,7 @@ public class LayoutEjemplos {
         gbc.ipady = 150;        //tamaño del espacio a usar
         gbc.ipadx = 500;
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        pnlTabla.add(new PatLabel("Loading data..."));
+        pnlTabla.add(new EXOLabel("Loading data..."));
         pnl.add(pnlTabla, gbc);
 
         //Limpiar grid

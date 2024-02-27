@@ -7,11 +7,11 @@ import javax.swing.JLabel;
 
 import UserInterface.IAStyle;
 
-public class PatLabel extends JLabel{
-    public PatLabel(){
+public class EXOLabel extends JLabel{
+    public EXOLabel(){
         customizeComponent();
     }
-    public PatLabel(String text){
+    public EXOLabel(String text){
         setText(text);
         customizeComponent();
     }

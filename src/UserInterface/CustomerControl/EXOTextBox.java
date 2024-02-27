@@ -8,9 +8,9 @@ import javax.swing.border.EmptyBorder;
 
 import UserInterface.IAStyle;
 
-public class PatTextBox extends JTextField {
+public class EXOTextBox extends JTextField {
 
-    public PatTextBox() {
+    public EXOTextBox() {
         customizeComponent();
     }
 

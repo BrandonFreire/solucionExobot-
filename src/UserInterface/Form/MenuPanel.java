@@ -11,15 +11,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import UserInterface.IAStyle;
-import UserInterface.CustomerControl.PatButton;
+import UserInterface.CustomerControl.EXOButton;
 
 public class MenuPanel extends JPanel {
-    public  PatButton   
-            btnHome     = new PatButton("Home"),
-            btnLogin    = new PatButton("Login"),
-            btnSexo     = new PatButton("Sexo"),
-            btnLocalidad= new PatButton("Localidad"),
-            btnTest     = new PatButton("btnTest");
+    public  EXOButton   
+            btnHome     = new EXOButton("Home"),
+            btnLogin    = new EXOButton("Login"),
+            btnSexo     = new EXOButton("Sexo"),
+            btnLocalidad= new EXOButton("Localidad"),
+            btnTest     = new EXOButton("btnTest");
 
     public MenuPanel(){
         customizeComponent();
