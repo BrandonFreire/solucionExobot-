@@ -1,33 +1,65 @@
 package BusinessLogic;
-
 import java.util.List;
-
 import DataAccess.ExobotDAO;
 import DataAccess.DTO.ExobotDTO;
-
+/**
+ * @author Ismael Freire
+ * @date 24/02/2024
+ * @version 1.0
+ */
 public class ExobotBL {
-    private ExobotDTO exobot;
-    private ExobotDAO sDAO = new ExobotDAO();
+    private ExobotDTO exobotDTO;
+    private ExobotDAO exobotDAO = new ExobotDAO();
+    /**
+     * constructor sin parametros
+     */
+    public ExobotBL() {}
 
-    public ExobotBL(){}
-
+    public ExobotDTO getReadBy(int IdExaBot) throws Exception{
+        exobotDTO = exobotDAO.readBy(IdExaBot);
+        return exobotDTO;
+    }
     public List<ExobotDTO> getAll() throws Exception{
-        return sDAO.readAll();
+        return exobotDAO.readAll();
     }
-    public ExobotDTO getByIdSexo(int idSexo) throws Exception{
-        exobot = sDAO.readBy(idSexo);
-        return exobot;
+
+    public List<ExobotDTO> getReadSections(int limit, int offset) throws Exception{
+        // for (ExobotDTO exobotList : iterable) {
+        // }
+        return exobotDAO.readSections(limit, offset);
     }
-    public boolean create(ExobotDTO sexoDTO) throws Exception{   
-        return sDAO.create(sexoDTO);
+
+    public boolean create(ExobotDTO exobotDTO) throws Exception{   
+        return exobotDAO.create(exobotDTO);
     }
-    public boolean update(ExobotDTO sexoDTO) throws Exception{
-        return sDAO.update(sexoDTO);
+    public boolean update(ExobotDTO exobotDTO) throws Exception{
+        return exobotDAO.update(exobotDTO);
     }
-    public boolean delete(int idSexo) throws Exception{
-        return sDAO.delete(idSexo);
+    
+    public boolean delete(int IdExobot) throws Exception{
+        return exobotDAO.delete(IdExobot);
     }
+
     public Integer getMaxRow() throws Exception{
-        return sDAO.getMaxRow();
+        return exobotDAO.getMaxRow();
     }
 }
+
+    // public boolean add(int IdIABot, int IdArmaIzquierda, int IdArmaDerecha, String Nombre, String Serie) throws Exception{
+    //     exobotDTO = new ExobotDTO();
+    //     // sexo.setNombre(nombre);
+    //     exobotDTO.setIdIABot(IdIABot);
+    //     exobotDTO.setIdArmaIzquierda(IdArmaIzquierda);
+    //     exobotDTO.setIdArmaDerecha(IdArmaDerecha);
+    //     exobotDTO.setNombre(Nombre);
+    //     exobotDTO.setSerie(Serie);
+    //     return exobotDAO.create(exobotDTO);
+    // }
+
+    // public boolean update(String Nombre, String Serie, int IdExaBot) throws Exception{
+    //     exobotDTO = new ExobotDTO();
+    //     exobotDTO.setNombre(Nombre);
+    //     exobotDTO.setSerie(Serie);
+    //     exobotDTO.setIdExaBot(IdExaBot);
+    //     return exobotDAO.update(exobotDTO);
+    // }

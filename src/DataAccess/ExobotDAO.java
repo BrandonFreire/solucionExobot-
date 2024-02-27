@@ -1,137 +1,132 @@
 package DataAccess;
 
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import DataAccess.DTO.ExobotDTO;
+/**
+ * @author Ismael Freire
+ * @date 24/02/2024
+ * @version 2.0
+ */
 
-public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO>{
+public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO> {
+
     @Override
     public ExobotDTO readBy(Integer id) throws Exception {
-        ExobotDTO oS = new ExobotDTO();
-        String query =" SELECT IdExaBot  " 
-                     +" ,IdIABot        " 
-                     +" ,IdArmaDerecha "
-                     +" ,IdArmaIzquierda " 
-                     +" ,Nombre " 
-                     +" ,Serie " 
-                     +" ,Estado " 
-                     +" WHERE   Estado ='A' AND IdExaBot =   "+ id.toString() ;
+        ExobotDTO exobotDTO = new ExobotDTO();
+        String query = "SELECT IdIABot"
+                + ", IdArmaIzquierda"
+                + ", IdArmaDerecha"
+                + ", Nombre"
+                + ", Serie FROM"
+                + " Exobots WHERE Estado = 'A' AND IdExaBot = " + id.toString();
         try {
-            Connection conn = openConnection();         // conectar a DB     
-            Statement  stmt = conn.createStatement();   // CRUD : select * ...    
-            ResultSet rs   = stmt.executeQuery(query);  // ejecutar la
+            Connection conn = openConnection(); // conectar a DB
+            Statement stmt = conn.createStatement(); // CRUD : select * ...
+            ResultSet rs = stmt.executeQuery(query); // ejecutar la
             while (rs.next()) {
-                oS = new ExobotDTO(rs.getInt(1)           // IdSexo
-                                ,rs.getInt(2)        // Nombre             
-                                ,rs.getInt(3)        // Estado         
-                                ,rs.getInt(4)        // FechaCrea      
-                                ,rs.getString(5)
-                                ,rs.getString(6)     // FechaModifica
-                                ,rs.getString(7));      // FechaModifica
+                exobotDTO = new ExobotDTO(rs.getInt(1) // IdSexo
+                        , rs.getInt(2) // Nombre
+                        , rs.getInt(3) // Estado
+                        , rs.getString(4) // FechaCrea
+                        , rs.getString(5)); // FechaModifica
             }
-        } 
-        catch (SQLException e) {
-            throw e;//new PatException(e.getMessage(), getClass().getName(), "readBy()");
+        } catch (SQLException e) {
+            throw e; // new PatException(e.getMessage(), getClass().getName(), "readBy()");
         }
-        return oS;
+        return exobotDTO;
     }
 
-    @Override
-    public List<ExobotDTO> readAll() throws Exception {
-        List <ExobotDTO> lst = new ArrayList<>();
-        String query =" SELECT IdExaBot  " 
-                     +" ,IdIABot        " 
-                     +" ,IdArmaDerecha "
-                     +" ,IdArmaIzquierda " 
-                     +" ,Nombre " 
-                     +" ,Serie " 
-                     +" ,Estado " 
-                     +" WHERE   Estado ='A'";
-
+    public List<ExobotDTO> readSections(int limit, int offset) throws Exception {
+        List<ExobotDTO> list = new ArrayList<>();
+        String query = "SELECT IdIABot, IdArmaIzquierda, IdArmaDerecha, Nombre, Serie FROM Exobots WHERE Estado = 'A' LIMIT ? OFFSET ?";
         try {
-            Connection conn = openConnection();         // conectar a DB     
-            Statement  stmt = conn.createStatement();   // CRUD : select * ...    
-            ResultSet rs   = stmt.executeQuery(query);    // ejecutar la
+            Connection conn = openConnection();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, limit);
+            pstmt.setInt(2, offset);
+            // pstmt.executeUpdate();
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                ExobotDTO s = new ExobotDTO(rs.getInt(1)           // IdSexo
-                                            ,rs.getInt(2)        // Nombre             
-                                            ,rs.getInt(3)        // Estado         
-                                            ,rs.getInt(4)        // FechaCrea      
-                                            ,rs.getString(5)
-                                            ,rs.getString(6)     // FechaModifica
-                                            ,rs.getString(7));      // FechaModifica
-                lst.add(s);
+                ExobotDTO eDTO = new ExobotDTO(rs.getInt(1) // IdIFSexo;
+                        , rs.getInt(2) // Nombre;
+                        , rs.getInt(3) // Estado;
+                        , rs.getString(4) // FechaCrea;
+                        , rs.getString(5)); // FechaModifica;
+                list.add(eDTO);
             }
-        } 
-        catch (SQLException e) {
-            throw e;// new PatException(e.getMessage(), getClass().getName(), "readAll()");
+        } catch (SQLException e) {
+            throw e; // new Exception(getClass() + "getMaxIdSexo");
         }
-        return lst; 
+        return list;
     }
 
     @Override
     public boolean create(ExobotDTO entity) throws Exception {
-        String query = " INSERT INTO Exobot (IdIABot, IdArmaDerecha, IdArmaIzquierda, Nombre, Serie) VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO Exobots (IdIABot, IdArmaIzquierda, IdArmaDerecha, Nombre, Serie) VALUES (?,?,?,?,?)";
         try {
-            Connection        conn  = openConnection();
+            Connection conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, entity.getIdIABot());
-            pstmt.setInt(2, entity.getIdAramaDerecha());
-            pstmt.setInt(1, entity.getIdAramaIzquierda());
-            pstmt.setString(1, entity.getNombre());
-            pstmt.setString(1, entity.getSerie());
+            pstmt.setInt(2, entity.getIdArmaIzquierda());
+            pstmt.setInt(3, entity.getIdArmaDerecha());
+            pstmt.setString(4, entity.getNombre());
+            pstmt.setString(5, entity.getSerie());
             pstmt.executeUpdate();
             return true;
-        } 
-        catch (SQLException e) {
-            throw e;//new PatException(e.getMessage(), getClass().getName(), "create()");
+        } catch (SQLException e) {
+            throw e; // new PatException(e.getMessage(), getClass().getName(), "create()");
         }
     }
 
     @Override
     public boolean update(ExobotDTO entity) throws Exception {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
-        LocalDateTime now = LocalDateTime.now();
-        String query = " UPDATE Exobot SET Nombre = ?, FechaModifica = ? WHERE IdExaBot = ?";
+        // DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        // LocalDateTime now = LocalDateTime.now();
+        // pstmt.setString(2, dtf.format(now).toString());
+        String query = "UPDATE Exobots SET Nombre = ?, Serie = ? WHERE IdExaBot = ?";
         try {
-            Connection          conn = openConnection();
-            PreparedStatement pstmt  = conn.prepareStatement(query);
+            Connection conn = openConnection();
+            PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setString(1, entity.getNombre());
-            pstmt.setString(2, dtf.format(now).toString());
+            pstmt.setString(2, entity.getSerie());
             pstmt.setInt(3, entity.getIdExaBot());
             pstmt.executeUpdate();
             return true;
-        } 
-        catch (SQLException e) {
-            throw e; //new PatException(e.getMessage(), getClass().getName(), "update()");
+        } catch (SQLException e) {
+            throw e; // new PatException(e.getMessage(), getClass().getName(), "update()");
         }
     }
 
     @Override
     public boolean delete(Integer id) throws Exception {
-        String query = " UPDATE Exobot SET Estado = ? WHERE IdExaBot = ?";
+        String query = "UPDATE Exobots SET Estado = ? WHERE IdExaBot = ?";
         try {
             Connection          conn = openConnection();
-            PreparedStatement  pstmt = conn.prepareStatement(query);
+            PreparedStatement   pstmt = conn.prepareStatement(query);
             pstmt.setString(1, "X");
             pstmt.setInt(2, id);
             pstmt.executeUpdate();
             return true;
         } 
         catch (SQLException e) {
-            throw e; //new PatException(e.getMessage(), getClass().getName(), "delete()");
+            throw e; //ew PatException(e.getMessage(), getClass().getName(), "delete()");
         }
     }
 
+    @Override
+    public List<ExobotDTO> readAll() throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'readAll'");
+    }
+
     public Integer getMaxRow()  throws Exception  {
-        String query =" SELECT COUNT(*) TotalReg FROM Exobot "
+        String query =" SELECT COUNT(*) TotalReg FROM Exobots "
                      +" WHERE   Estado ='A' ";
         try {
             Connection conn = openConnection();         // conectar a DB     
@@ -142,9 +137,8 @@ public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO>{
             }
         } 
         catch (SQLException e) {
-            throw e;//new PatException(e.getMessage(), getClass().getName(), "getMaxRow()");
+            throw e;
         }
         return 0;
     }
-
 }
