@@ -4,10 +4,10 @@ import javax.swing.*;
 
 import BusinessLogic.SexoBL;
 import DataAccess.DTO.SexoDTO;
-import UserInterface.IAStyle;
 import UserInterface.CustomerControl.PatButton;
 import UserInterface.CustomerControl.EXOLabel;
 import UserInterface.CustomerControl.EXOTextBox;
+import UserInterface.CustomerControl.IAStyle;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

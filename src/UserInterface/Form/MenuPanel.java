@@ -10,8 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import UserInterface.IAStyle;
 import UserInterface.CustomerControl.EXOButton;
+import UserInterface.CustomerControl.IAStyle;
 
 public class MenuPanel extends JPanel {
     public  EXOButton   

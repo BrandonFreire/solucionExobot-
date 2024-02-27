@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
-import UserInterface.IAStyle;
+import UserInterface.CustomerControl.IAStyle;
 
 public abstract class SplashScreenForm   {
     private static JFrame       frmSplash;

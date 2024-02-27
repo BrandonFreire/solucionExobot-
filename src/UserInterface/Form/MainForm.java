@@ -6,7 +6,7 @@ import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import UserInterface.IAStyle;
+import UserInterface.CustomerControl.IAStyle;
 
 public class MainForm extends JFrame{
     MenuPanel  pnlMenu = new MenuPanel();

@@ -8,9 +8,6 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
-
-import UserInterface.IAStyle;
-
 import javax.swing.ImageIcon;
 
 public class EXOButton  extends JButton implements MouseListener {

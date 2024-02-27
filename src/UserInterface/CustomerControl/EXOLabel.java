@@ -5,8 +5,6 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
-import UserInterface.IAStyle;
-
 public class EXOLabel extends JLabel{
     public EXOLabel(){
         customizeComponent();
