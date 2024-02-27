@@ -44,7 +44,7 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
     private void loadRow() throws Exception {
         idExobot      = 1;
         exobotBL      = new ExobotBL();
-        exobot        = exobotBL.getByIdExobot(idExobot);
+        exobot        = exobotBL.getReadBy(idExobot);
         idMaxExobot   = exobotBL.getMaxRow();
     }
 
@@ -121,7 +121,7 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
         if (e.getSource() == btnRowFin)
             idExobot = idMaxExobot;
         try {
-            exobot    = exobotBL.getByIdExobot(idExobot);  
+            exobot    = exobotBL.getReadBy(idExobot);  
             showRow(); 
         } catch (Exception ex) {}
     }
@@ -133,8 +133,8 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
         for (ExobotDTO s : exobotBL.getAll()) {
             data[index][0] = s.getIdExaBot();
             data[index][1] = s.getIdIABot();
-            data[index][2] = s.getIdAramaDerecha();
-            data[index][3] = s.getIdAramaIzquierda();
+            data[index][2] = s.getIdArmaDerecha();
+            data[index][3] = s.getIdArmaIzquierda();
             data[index][4] = s.getNombre();
             data[index][5] = s.getSerie();
 
@@ -162,7 +162,7 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
                     String strIdSexo = table.getModel().getValueAt(row, 0).toString();
                     idExobot = Integer.parseInt(strIdSexo);
                     try {
-                        exobot = exobotBL.getByIdExobot(idExobot);
+                        exobot = exobotBL.getReadBy(idExobot);
                         showRow();
                     } catch (Exception ignored) {
                     }

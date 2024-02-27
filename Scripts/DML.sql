@@ -24,7 +24,7 @@ VALUES ('David', 1),
        ('Ismael', 2),
        ('Ivonne', 3);
 
-INSERT INTO Exobot (IdIABot, IdArmaIzquierda, IdArmaDerecha, Nombre, Serie)
+INSERT INTO Exobots (IdIABot, IdArmaIzquierda, IdArmaDerecha, Nombre, Serie)
 VALUES  (1, 1, 1, 'Exobot-001', 'Serie E001'),
         (1, 2, 2, 'Exobot-002', 'Serie E002'),
         (1, 1, 1, 'Exobot-003', 'Serie E003'),
