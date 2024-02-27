@@ -14,7 +14,7 @@ public class ExobotBL {
     public List<ExobotDTO> getAll() throws Exception{
         return sDAO.readAll();
     }
-    public ExobotDTO getByIdSexo(int idSexo) throws Exception{
+    public ExobotDTO getByIdExobot(int idSexo) throws Exception{
         exobot = sDAO.readBy(idSexo);
         return exobot;
     }
