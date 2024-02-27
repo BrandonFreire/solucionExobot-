@@ -54,8 +54,8 @@ CREATE TABLE Persona (
 );
 
 
-SELECT pe.IdPersona IdPersona, pe.Nombre Nombre, ca.Descp Cargo
-FROM Persona   pe 
-JOIN Cargo     ca ON pe.IdCargo = ca.IdCargo
-WHERE   pe.Estado = 'A'
-AND     ca.Estado = 'A';
+CREATE TABLE PersonaCargo AS
+SELECT pe.IdPersona AS IdPersona, pe.Nombre AS Nombre, ca.Descp AS Cargo
+FROM Persona pe
+JOIN Cargo ca ON pe.IdCargo = ca.IdCargo
+WHERE pe.Estado = 'A' AND ca.Estado = 'A';

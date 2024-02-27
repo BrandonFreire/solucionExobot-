@@ -4,10 +4,12 @@
  * @date 12/02/2024
  * @version 10.0
  */
+
 package BusinessLogic.InteligenciaArtificial;
 import java.security.SecureRandom;
 
 public class IAIABot {
+
     private static final String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     private static SecureRandom random = new SecureRandom();
     private static IAIABot iaInstance;
@@ -38,7 +40,7 @@ public class IAIABot {
         this.iaNombre = iaNombre;
     }
 
-    public String dmCrearCodigoSeguridad() {
+    public String dmCrearCodigoSeguridad()  {
         StringBuilder codigo = new StringBuilder(10);
         for (int i = 0; i < 10; i++) {
             codigo.append(CARACTERES.charAt(random.nextInt(CARACTERES.length())));
