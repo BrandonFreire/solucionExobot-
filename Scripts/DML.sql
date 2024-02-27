@@ -1,4 +1,4 @@
--- database: ../DataBase/Data.sqlite
+-- database: ../DataBase/ExobotDatos.sqlite
 INSERT INTO ArmaIzquierda(Nombre)
 VALUES ('Metralleta MK-61'),
        ('Bazuca antitanque');
