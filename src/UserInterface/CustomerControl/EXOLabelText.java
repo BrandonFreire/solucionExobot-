@@ -2,8 +2,6 @@ package UserInterface.CustomerControl;
 
 import javax.swing.*;
 
-import UserInterface.IAStyle;
-
 import java.awt.*;
 
 public class EXOLabelText extends JPanel{

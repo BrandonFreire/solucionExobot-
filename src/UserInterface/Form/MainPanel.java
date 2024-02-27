@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import UserInterface.IAStyle;
+import UserInterface.CustomerControl.IAStyle;
 
 public class MainPanel extends JPanel{
     public MainPanel(){

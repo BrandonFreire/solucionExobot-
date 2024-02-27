@@ -1,4 +1,4 @@
-package UserInterface;
+package UserInterface.CustomerControl;
 
 import java.awt.Color;
 import java.awt.Cursor;
