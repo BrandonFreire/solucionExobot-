@@ -86,9 +86,9 @@ public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO>{
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, entity.getIdIABot());
             pstmt.setInt(2, entity.getIdAramaDerecha());
-            pstmt.setInt(1, entity.getIdAramaIzquierda());
-            pstmt.setString(1, entity.getNombre());
-            pstmt.setString(1, entity.getSerie());
+            pstmt.setInt(3, entity.getIdAramaIzquierda());
+            pstmt.setString(4, entity.getNombre());
+            pstmt.setString(5, entity.getSerie());
             pstmt.executeUpdate();
             return true;
         } 
@@ -99,15 +99,12 @@ public class ExobotDAO extends SQLiteDataHelper implements IDAO<ExobotDTO>{
 
     @Override
     public boolean update(ExobotDTO entity) throws Exception {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
-        LocalDateTime now = LocalDateTime.now();
-        String query = " UPDATE Exobot SET Nombre = ?, FechaModifica = ? WHERE IdExaBot = ?";
+        String query = " UPDATE Exobot SET Nombre = ? WHERE IdExaBot = ?";
         try {
             Connection          conn = openConnection();
             PreparedStatement pstmt  = conn.prepareStatement(query);
             pstmt.setString(1, entity.getNombre());
-            pstmt.setString(2, dtf.format(now).toString());
-            pstmt.setInt(3, entity.getIdExaBot());
+            pstmt.setInt(2, entity.getIdExaBot());
             pstmt.executeUpdate();
             return true;
         } 
