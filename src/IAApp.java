@@ -22,15 +22,15 @@ import UserInterface.Form.SplashScreenForm;
  public class IAApp {
     public static void main(String[] args) throws Exception {
 
-//         FlatLightLaf.setup();
-//         FlatLightLaf.supportsNativeWindowDecorations();
-//         try {
-//                 UIManager.setLookAndFeel(new FlatAtomOneDarkIJTheme());
-//             } catch (UnsupportedLookAndFeelException e) {
-//             e.printStackTrace();
-//         } 
+        FlatLightLaf.setup();
+        FlatLightLaf.supportsNativeWindowDecorations();
+        try {
+                UIManager.setLookAndFeel(new FlatAtomOneDarkIJTheme());
+            } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        } 
     
-//        SplashScreenForm.show();
+       //SplashScreenForm.show();
        MainForm frmMain = new MainForm("IABot");
     }
 }

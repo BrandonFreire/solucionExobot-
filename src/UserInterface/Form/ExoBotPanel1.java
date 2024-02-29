@@ -19,6 +19,7 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
     private Integer idExobot = 0, idMaxExobot=0;
     private ExobotBL exobotBL = null;
     private ExobotDTO exobot = null;
+    
 
     public ExoBotPanel1() {
         try {
@@ -53,6 +54,9 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
         txtIdExobot.setText((ExobotNull) ? " " : exobot.getIdExaBot().toString());
         
         txtNombre.setText((ExobotNull) ? " " : exobot.getNombre());
+        txtIdArmaDer.setText((ExobotNull) ? " " : Integer.toString(exobot.getIdAramaDerecha()));
+        txtIdArmaIzq.setText((ExobotNull) ? " " : Integer.toString(exobot.getIdAramaIzquierda()));
+        txtSerie.setText((ExobotNull) ? " " : exobot.getSerie());
         lblTotalReg.setText(idExobot.toString() + " de " + idMaxExobot.toString());
     }
 
@@ -70,7 +74,7 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
             if (IAStyle.showConfirmYesNo("¿Seguro que desea " + ((ExobotNull) ? "AGREGAR ?" : "ACTUALIZAR ?"))){
             
                 if (ExobotNull)
-                    exobot = new ExobotDTO(txtNombre.getText());
+                    exobot = new ExobotDTO(1,1,Integer.parseInt(txtIdArmaIzq.getText()), Integer.parseInt(txtIdArmaDer.getText()), txtNombre.getText(), txtSerie.getText(), "A");
                 else
                     exobot.setNombre(txtNombre.getText());
     
@@ -179,10 +183,16 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
             lblTitulo   = new EXOLabel("EXOBOT"),
             lblIdSexo   = new EXOLabel(" Codigo:      "),
             lblNombre   = new EXOLabel("*Descripción: "),
+            lblIdArmaDer   = new EXOLabel("Arma Derecha: "),
+            lblIdArmaIzq   = new EXOLabel("*Arma Izquierda: "),
+            lblSerie   = new EXOLabel("*Serie: "),
             lblTotalReg = new EXOLabel(" 0 de 0 ");
     private EXOTextBox 
-            txtIdExobot   = new EXOTextBox(),
-            txtNombre   = new EXOTextBox();
+            txtIdExobot    = new EXOTextBox(),
+            txtNombre      = new EXOTextBox(),
+            txtIdArmaIzq   = new EXOTextBox(),
+            txtIdArmaDer   = new EXOTextBox(),
+            txtSerie       = new EXOTextBox();
     private EXOButton 
             btnPageIni  = new EXOButton(" |< "),
             btnPageAnt  = new EXOButton(" << "),
@@ -209,6 +219,9 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
         GridBagConstraints gbc = new GridBagConstraints();
         
         txtNombre.setBorderLine();
+        txtIdArmaIzq.setBorderLine();
+        txtIdArmaDer.setBorderLine();
+        txtSerie.setBorderLine();
 
         pnlBtnPage.add(btnPageIni);
         pnlBtnPage.add(btnPageAnt);
@@ -289,6 +302,30 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = GridBagConstraints.REMAINDER; // Indica que este componente ocupa toda la fila
         add(txtNombre, gbc);
+        gbc.gridy = 7;
+        gbc.gridx = 0;
+        add(lblIdArmaIzq, gbc);
+        gbc.gridy = 7;
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        add(txtIdArmaIzq, gbc);
+        gbc.gridy = 8;
+        gbc.gridx = 0;
+        add(lblIdArmaDer, gbc);
+        gbc.gridy = 8;
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        add(txtIdArmaDer, gbc);
+        gbc.gridy = 9;
+        gbc.gridx = 0;
+        add(lblSerie, gbc);
+        gbc.gridy = 9;
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        add(txtSerie, gbc);
 
         // gbc.gridy = 7;
         // gbc.gridx = 1;
@@ -296,7 +333,7 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
         // gbc.fill = GridBagConstraints.HORIZONTAL;
         // add(pnlBtnRow, gbc);
 
-        gbc.gridy = 7;
+        gbc.gridy = 10;
         gbc.gridx = 0;
         gbc.gridwidth = 3;
         gbc.insets = new Insets(30, 0, 0, 0);
