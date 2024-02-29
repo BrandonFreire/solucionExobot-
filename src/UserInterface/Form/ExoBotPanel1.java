@@ -19,6 +19,7 @@ public class ExoBotPanel1  extends JPanel implements ActionListener {
     private Integer idExobot = 0, idMaxExobot=0;
     private ExobotBL exobotBL = null;
     private ExobotDTO exobot = null;
+    
 
     public ExoBotPanel1() {
         try {
