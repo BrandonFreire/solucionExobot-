@@ -31,8 +31,8 @@ public class PersonaDAO extends SQLiteDataHelper implements IDAO<PersonaDTO>{
                 oS = new PersonaDTO(rs.getInt(1)           // IdSexo
                                 ,rs.getString(2)        // Nombre             
                                 ,rs.getString(3)        // Estado         
-                                ,rs.getString(4)        // FechaCrea      
-                                ,rs.getString(5));      // FechaModifica
+                                ,rs.getString(4));        // FechaCrea      
+                                /*,rs.getString(5));*/      // FechaModifica
             }
         } 
         catch (SQLException e) {
@@ -59,9 +59,9 @@ public class PersonaDAO extends SQLiteDataHelper implements IDAO<PersonaDTO>{
             while (rs.next()) {
                 PersonaDTO s = new PersonaDTO( rs.getInt(1)     // IdSexo
                                         ,rs.getString(2)  // Nombre             
-                                        ,rs.getString(3)  // Estado         
-                                        ,rs.getString(4)  // FechaCrea      
-                                        ,rs.getString(5));// FechaModifica
+                                        ,rs.getString(3) // Estado         
+                                        ,rs.getString(4));   // FechaCrea      
+                                        /*,rs.getString(5));*/ // FechaModifica
                 lst.add(s);
             }
         } 

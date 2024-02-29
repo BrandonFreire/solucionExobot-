@@ -10,12 +10,12 @@ public class PersonaDTO {
     
     public PersonaDTO() {
     }
-    public PersonaDTO(Integer idPersona, String nombre, String estado, String fechaCrea, String fechaModifica) {
-        IdPersona = idPersona;
-        Nombre = nombre;
-        Estado = estado;
-        FechaCrea = fechaCrea;
-        FechaModifica = fechaModifica;
+    public PersonaDTO(Integer idPersona, String nombre, String estado, String fechaCrea/*, String fechaModifica*/) {
+        this.IdPersona = idPersona;
+        this.Nombre = nombre;
+        this.Estado = estado;
+        this.FechaCrea = fechaCrea;
+        //this.FechaModifica = fechaModifica;
     }
     
     public PersonaDTO(String nombre) {

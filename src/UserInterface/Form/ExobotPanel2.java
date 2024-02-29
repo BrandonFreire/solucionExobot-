@@ -31,9 +31,7 @@ public class ExobotPanel2  extends JPanel implements ActionListener {
             btnRowAnt.addActionListener(this);
             btnRowSig.addActionListener(this);
             btnRowFin.addActionListener(this);
-            
-            btnNuevo.addActionListener(     e -> btnNuevoClick());
-            btnGuardar.addActionListener(   e -> btnGuardarClick());
+        
             btnEliminar.addActionListener(  e -> btnEliminarClick());
             btnCancelar.addActionListener(  e -> btnCancelarClick());
         } catch (Exception e) {
@@ -44,43 +42,15 @@ public class ExobotPanel2  extends JPanel implements ActionListener {
     private void loadRow() throws Exception {
         idPersona      = 1;
         personaBL      = new PersonaBL();
-        persona        = personaBL.getByIdSexo(idPersona);
+        persona        = personaBL.getByIdPersona(idPersona);
         idMaxPersona   = personaBL.getMaxRow();
     }
 
     private void showRow() {
-        boolean sexoNull = (persona == null);
-        txtIdSexo.setText((sexoNull) ? " " : persona.getIdPersona().toString());
-        txtNombre.setText((sexoNull) ? " " : persona.getNombre());
-        lblTotalReg.setText(idPersona.toString() + " de " + idMaxPersona.toString());
-    }
-
-    private void btnNuevoClick() {
-        persona = null;
-        showRow();
-    } 
-    
-    private void btnGuardarClick() {
         boolean personaNull = (persona == null);
-        // String buttonText = ((JButton) e.getSource()).getText();
-        try {
-            if (IAStyle.showConfirmYesNo("¿Seguro que desea " + ((personaNull) ? "AGREGAR ?" : "ACTUALIZAR ?"))){
-            
-                if (personaNull)
-                    persona = new PersonaDTO(txtNombre.getText());
-                else
-                    persona.setNombre(txtNombre.getText());
-    
-                if(!((personaNull) ? personaBL.create(persona) : personaBL.update(persona)))
-                    IAStyle.showMsgError("Error al guardar...!");
-    
-                loadRow();
-                showRow();
-                showTable();
-            }
-        } catch (Exception e) {
-            IAStyle.showMsgError(e.getMessage());
-        }
+        txtIdPersona.setText((personaNull) ? " " : persona.getIdPersona().toString());
+        txtNombre.setText((personaNull) ? " " : persona.getNombre());
+        lblTotalReg.setText(idPersona.toString() + " de " + idMaxPersona.toString());
     }
 
     private void btnEliminarClick() {
@@ -118,19 +88,20 @@ public class ExobotPanel2  extends JPanel implements ActionListener {
         if (e.getSource() == btnRowFin)
             idPersona = idMaxPersona;
         try {
-            persona    = personaBL.getByIdSexo(idPersona);  
+            persona    = personaBL.getByIdPersona(idPersona);  
             showRow(); 
         } catch (Exception ex) {}
     }
 
     private void showTable() throws Exception {
-        String[] header = {"Id", "Nombre", "Estado"};
-        Object[][] data = new Object[personaBL.getAll().size()][3];
+        String[] header = {"Id", "Nombre", "Fecha Creacion", "Estado"};
+        Object[][] data = new Object[personaBL.getAll().size()][4];
         int index = 0;
         for (PersonaDTO s : personaBL.getAll()) {
             data[index][0] = s.getIdPersona();
             data[index][1] = s.getNombre();
-            data[index][2] = s.getEstado();
+            data[index][2] = s.getFechaCrea();
+            data[index][3] = s.getEstado();
             index++;
         }
 
@@ -152,30 +123,32 @@ public class ExobotPanel2  extends JPanel implements ActionListener {
                 int row = table.rowAtPoint(e.getPoint());
                 int col = table.columnAtPoint(e.getPoint());
                 if (row >= 0 && col >= 0) {
-                    String strIdSexo = table.getModel().getValueAt(row, 0).toString();
-                    idPersona = Integer.parseInt(strIdSexo);
+                    String strIdPersona = table.getModel().getValueAt(row, 0).toString();
+                    idPersona = Integer.parseInt(strIdPersona);
                     try {
-                        persona = personaBL.getByIdSexo(idPersona);
+                        persona = personaBL.getByIdPersona(idPersona);
                         showRow();
                     } catch (Exception ignored) {
                     }
-                    System.out.println("Tabla.Selected: " + strIdSexo);
+                    System.out.println("Tabla.Selected: " + strIdPersona);
                 }
             }
         });
     }
 
 /************************
- * FormDesing : pat_mic
+ * FormDesing : 
  ************************/ 
     private EXOLabel 
-            lblTitulo   = new EXOLabel("SEXO"),
-            lblIdSexo   = new EXOLabel(" Codigo:      "),
+            lblTitulo   = new EXOLabel("PERSONA"),
+            lblIdPersona   = new EXOLabel(" Codigo:      "),
             lblNombre   = new EXOLabel("*Descripción: "),
+            //lblFechaCrea   = new EXOLabel("*FechaCrea: "),
             lblTotalReg = new EXOLabel(" 0 de 0 ");
     private EXOTextBox 
-            txtIdSexo   = new EXOTextBox(),
+            txtIdPersona   = new EXOTextBox(),
             txtNombre   = new EXOTextBox();
+            //txtFechaCrea = new  EXOTextBox();
     private EXOButton 
             btnPageIni  = new EXOButton(" |< "),
             btnPageAnt  = new EXOButton(" << "),
@@ -187,8 +160,6 @@ public class ExobotPanel2  extends JPanel implements ActionListener {
             btnRowSig   = new EXOButton(" >> "),
             btnRowFin   = new EXOButton(" >| "),
 
-            btnNuevo    = new EXOButton("Nuevo"),
-            btnGuardar  = new EXOButton("Guardar"),
             btnCancelar = new EXOButton("Cancelar"),
             btnEliminar = new EXOButton("Eliminar");
     private JPanel 
@@ -200,10 +171,9 @@ public class ExobotPanel2  extends JPanel implements ActionListener {
     public void customizeComponent() {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        
-        txtIdSexo.setEnabled(false);
-        txtIdSexo.setBorderLine();
+    
         txtNombre.setBorderLine();
+        //txtFechaCrea.setBorderLine();
 
         pnlBtnPage.add(btnPageIni);
         pnlBtnPage.add(btnPageAnt);
@@ -219,8 +189,8 @@ public class ExobotPanel2  extends JPanel implements ActionListener {
         pnlBtnRow.add(btnRowSig);
         pnlBtnRow.add(btnRowFin);
 
-        pnlBtnCRUD.add(btnNuevo);
-        pnlBtnCRUD.add(btnGuardar);
+        //pnlBtnCRUD.add(btnNuevo);
+        //pnlBtnCRUD.add(btnGuardar);
         pnlBtnCRUD.add(btnCancelar);
         pnlBtnCRUD.add(btnEliminar);
         pnlBtnCRUD.setBorder(IAStyle.createBorderRect());
@@ -270,12 +240,12 @@ public class ExobotPanel2  extends JPanel implements ActionListener {
 
         gbc.gridy = 5;
         gbc.gridx = 0;
-        add(lblIdSexo, gbc);
+        add(lblIdPersona, gbc);
         gbc.gridy = 5;
         gbc.gridx = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = GridBagConstraints.REMAINDER; // Indica que este componente ocupa toda la fila
-        add(txtIdSexo, gbc);
+        add(txtIdPersona, gbc);
 
         gbc.gridy = 6;
         gbc.gridx = 0;
@@ -285,12 +255,6 @@ public class ExobotPanel2  extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = GridBagConstraints.REMAINDER; // Indica que este componente ocupa toda la fila
         add(txtNombre, gbc);
-
-        // gbc.gridy = 7;
-        // gbc.gridx = 1;
-        // gbc.gridwidth = 2;
-        // gbc.fill = GridBagConstraints.HORIZONTAL;
-        // add(pnlBtnRow, gbc);
 
         gbc.gridy = 7;
         gbc.gridx = 0;

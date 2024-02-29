@@ -14,7 +14,7 @@ public class PersonaBL {
     public List<PersonaDTO> getAll() throws Exception{
         return pDAO.readAll();
     }
-    public PersonaDTO getByIdSexo(int idPersona) throws Exception{
+    public PersonaDTO getByIdPersona(int idPersona) throws Exception{
         persona = pDAO.readBy(idPersona);
         return persona;
     }
