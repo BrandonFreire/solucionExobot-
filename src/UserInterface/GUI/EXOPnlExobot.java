@@ -59,7 +59,7 @@ public class EXOPnlExobot extends JPanel implements ActionListener{
     private void loadData() throws Exception {
         idExabot      = 1;
         exobotBL      = new ExobotBL();
-        exobot        = exobotBL.getReadBy(idExabot);
+        exobot        = exobotBL.getByIdExobot(idExabot);
         //idMaxExabot   = exobotBL.getMaxidExabot();
     }
     private void showData() {
@@ -95,50 +95,59 @@ public class EXOPnlExobot extends JPanel implements ActionListener{
         }
     } 
     private void showTable() throws Exception {
+        int pageSize = 50;  // Número de datos por página
+        int totalData = exobotBL.getAll().size();
+        
+        // Calcular el número total de páginas
+        int totalPages = (int) Math.ceil((double) totalData / pageSize);
+    
         String[] header = {"Id", "Nombre", "Estado"};
-        Object[][] data = new Object[exobotBL.getAll().size()][6];  
+        
+        // Obtener el rango de datos para la página actual
+        int startIndex = (idExabot - 1) * pageSize;
+        int endIndex = Math.min(startIndex + pageSize, totalData);
+        
+        Object[][] data = new Object[pageSize][3];  // Cambiar 6 a 3 ya que solo hay 3 columnas
+        
         int index = 0;
-        for(ExobotDTO s : exobotBL.getAll()) {
+        for (int i = startIndex; i < endIndex; i++) {
+            ExobotDTO s = exobotBL.getAll().get(i);
             data[index][0] = s.getIdExaBot();
-            data[index][1] = s.getIdIABot();
-            data[index][2] = s.getIdArmaDerecha();
-            data[index][3] = s.getIdArmaIzquierda();
-            data[index][4] = s.getNombre();
-            data[index][5] = s.getSerie();
+            data[index][1] = s.getNombre();
+            data[index][2] = s.getEstado();
             index++;
         }
-        
-        JTable table  = new JTable(data, header);
+    
+        JTable table = new JTable(data, header);
         table.setShowHorizontalLines(true);
         table.setGridColor(Color.lightGray);
         table.setRowSelectionAllowed(true);
         table.setColumnSelectionAllowed(false);
-
+    
         table.setPreferredScrollableViewportSize(new Dimension(450, 150));
         table.setFillsViewportHeight(true);
-
-        //table.setBorder(border);
-        // pnlTabla.setBorder( BorderFactory.createTitledBorder(
-        //                     BorderFactory.createEtchedBorder(), " exobot ", TitledBorder.CENTER, TitledBorder.TOP));
-      
+    
         pnlTabla.removeAll();
         pnlTabla.add(table);
         JScrollPane scrollPane = new JScrollPane(table);
         pnlTabla.add(scrollPane);
-
-        table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){ 
+    
+        // Actualizar la etiqueta de total de registros
+        lblTotalReg.setText((startIndex + 1) + " - " + endIndex + " de " + totalData);
+    
+        table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-          
                 int col = 0;
                 int row = table.getSelectedRow();
                 String stridExabot = table.getModel().getValueAt(row, col).toString();
-
+    
                 idExabot = Integer.parseInt(stridExabot);
                 try {
-                    exobot    = exobotBL.getReadBy(idExabot);
-                    showData(); 
-                } catch (Exception e1) { }  
+                    exobot = exobotBL.getByIdExobot(idExabot);
+                    showData();
+                } catch (Exception e1) {
+                }
                 System.out.println("Tabla.Selected: " + stridExabot);
             }
         });
@@ -158,9 +167,7 @@ public class EXOPnlExobot extends JPanel implements ActionListener{
 
     }
 
-/************************
- * FormDesing : pat_mic
- ************************/ 
+
     private EXOLabel  
             lblTitulo  = new EXOLabel("exobot"          ),
             lblidExabot  = new EXOLabel("Codigo:      " ),
@@ -188,9 +195,7 @@ public class EXOPnlExobot extends JPanel implements ActionListener{
             margin     = new EmptyBorder(5, 5, 5, 5),
             border     = new CompoundBorder(line, margin);
     
-/************************
- * Customize : Form
- ************************/ 
+
     public void setGridBagLayout(){
         //setLayout(new GridBagLayout());
         GridBagConstraints gbc= new GridBagConstraints();

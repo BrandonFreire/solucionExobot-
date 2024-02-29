@@ -30,7 +30,7 @@ import UserInterface.Form.SplashScreenForm;
             e.printStackTrace();
         } 
     
-       SplashScreenForm.show();
+       //SplashScreenForm.show();
        MainForm frmMain = new MainForm("IABot");
     }
 }

@@ -14,9 +14,9 @@ import UserInterface.CustomerControl.EXOButton;
 import UserInterface.CustomerControl.IAStyle;
 
 public class MenuPanel extends JPanel {
-    public  EXOButton   
+    public EXOButton   
             btnHome     = new EXOButton("Home"),
-            btnLogin    = new EXOButton("Login"),
+            // Eliminar btnLogin
             btnExobot   = new EXOButton("Exobot"),
             btnExobot2  = new EXOButton("Exobot2"),
             btnTest     = new EXOButton("btnTest");
@@ -39,14 +39,12 @@ public class MenuPanel extends JPanel {
             e.printStackTrace();
         }
 
-        // add-botones
+
         add(btnHome);
-        add(btnLogin);
         add(btnExobot);
         add(btnExobot2);
         add(btnTest);
 
-        // add-copyright
-        add(new JLabel("\u00A9 2024 pat_mic"));
+        add(new JLabel("\u00A9 2024 exobot"));
     }
 }
